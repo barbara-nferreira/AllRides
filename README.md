@@ -27,7 +27,7 @@ List the main features of your project. For example:
 
 Include instructions on how to install and set up your project locally. For example:
 
-1. Clone the repository: `git clone https://github.com/your-username/your-project.git`
+1. Clone the repository: `git clone https://github.com/barbara-nferreira/AllRides.git`
 2. Navigate to the project directory: `cd your-project`
 3. Create a virtual environment: `py -m venv venv`
 4. Activate the virtual environment:
