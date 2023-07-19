@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{{ url_for("static", filename="assets/img/favicon.ico") }}" type="image/ico">
+
+  <!--Box Icons-->
+  <link rel="stylesheet" href="{{ url_for("static", filename="assets/fonts/boxicons/css/boxicons.min.css") }}">
+
+  <!--AOS Animations-->
+  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/node_modules/css/aos.css") }}">
+
+  <!--Vendors css-->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet'>
+
+  <!--Iconsmind Icons-->
+  <link rel="stylesheet" href="{{ url_for("static", filename="assets/fonts/iconsmind/iconsmind.css") }}">
+
+  <!--Google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+Pro:ital@0;1&display=swap"
+    rel="stylesheet">
+
+  <!--Master slider-->
+  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/node_modules/css/swiper-bundle.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/masterslider/style/masterslider.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/masterslider/skins/black-1/style.css") }}">
+
+  <!--Swiper slider-->
+  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/node_modules/css/swiper-bundle.min.css") }}">
+  <!-- Main CSS -->
+  <link href="{{ url_for("static", filename="assets/css/theme.min.css") }}" rel="stylesheet">
+
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <!--Preloader Spinner-->
+  <div class="spinner-loader bg-primary text-white">
+    <div class="spinner-grow" role="status">
+    </div>
+    <span class="small d-block ms-2">Loading...</span>
+  </div>
+
+  <!--begin:Header-->
+  {% include "header.html" %}
+  <!--end:header-->
+
+
+  <!--begin:main content-->
+  <main>
+    {% include "hero.html" %}
+
+    {% block content %}{% endblock %}    
+  </main>
+  <!--end:main content-->
+
+  <!--begin:Footer-->
+  {% include "footer.html" %}
+  <!--end:Footer-->
+
+
+  <!-- begin:Back to Top button -->
+  <a href="#" class="toTop">
+    <i class="bx bxs-up-arrow"></i>
+  </a>
+  <!-- end:Back to Top button -->
+
+
+  <!-- scripts -->
+  <script src="{{ url_for("static", filename="assets/js/theme.bundle.js") }}"></script>
+
+  <!--Mastert Slider start (Include jquery before master slider js)-->
+  <script src="{{ url_for("static", filename="assets/vendor/node_modules/js/jquery.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="assets/vendor/masterslider/jquery.easing.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="assets/vendor/masterslider/masterslider.min.js") }}"></script>
+  <script>
+    var slider = new MasterSlider();
+    slider.setup('masterslider', {
+      width: 1140,
+      height: 660,
+      minHeight: 400,
+      space: 0,
+      start: 1,
+      grabCursor: false,
+      layout: "fullwidth",
+      wheel: false,
+      autoplay: true,
+      instantStartLayers: true,
+      loop: true,
+      view: "basic",
+      instantStartLayers: true,
+    });
+    slider.control('arrows');
+
+  </script>
+
+  <!--Swiper slider-->
+  <script src="{{ url_for("static", filename="assets/vendor/node_modules/js/swiper-bundle.min.js") }}"></script>
+  <script>
+    //Main Hero Slider
+    var sliderThumbs = new Swiper('.progress-swiper-thumbs', {
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+      history: false,
+      breakpoints: {
+        480: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
+      },
+      on: {
+        'afterInit': function (swiper) {
+          swiper.el.querySelectorAll('.swiper-pagination-progress-inner')
+            .forEach($progress => $progress.style.transitionDuration =
+              `${swiper.params.autoplay.delay}ms`)
+        }
+      }
+    });
+    var swiperClassic = new Swiper(".swiper-classic", {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: ["-20%", 0, -1],
+        },
+        next: {
+          translate: ["100%", 0, 0],
+        },
+      },
+      thumbs: {
+        swiper: sliderThumbs
+      },
+    });
+    //swiper Testimonials
+    var swiperTestimonails = new Swiper(".swiper-testimonials", {
+      autoHeight: true,
+      spaceBetween: 16,
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 16
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 16
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        }
+      },
+      pagination: {
+        el: ".swiper-testimonials-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-testimonials-button-next",
+        prevEl: ".swiper-testimonials-button-prev"
+      }
+    });
+  </script>
+  <!--/end:Swiper slider-->
+
+  <!--Mapbox start-->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <script>
+    mapboxgl.accessToken =
+      'pk.eyJ1IjoiZGVzaWdubXlsaWZlIiwiYSI6ImNqeHlkMzljejAwaHAzbXFtaXphYWI3NmYifQ.IRPz2gseBSE-DQMzurY4ZA';
+    var officeLocations = [
+      { name: 'Milano MI, Itália', coordinates: [9.27944, 45.46241] },
+      { name: 'Roma RM, Itália', coordinates: [12.50491, 41.89967] },
+    ];
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [11.39, 43.87],
+      zoom: 5
+    });
+    // Add markers and popups for each office location
+    officeLocations.forEach(location => {
+      // create the popup
+      var popup = new mapboxgl.Popup({
+        offset: 18
+      }).setHTML(
+        `<h4 class="text-primary mb-2 fw-normal">Location</h4><small class="text-muted fs-6">${location.name}</small>`
+      );
+      // create DOM element for the marker
+      var el = document.createElement('div');
+      el.id = 'marker';
+      // create the marker
+      new mapboxgl.Marker(el)
+        .setLngLat(location.coordinates)
+        .setPopup(popup) // sets a popup on this marker
+        .addTo(map);
+    });
+  </script>
+  <!--/end:Mapbox-->
+</body>
+</html>

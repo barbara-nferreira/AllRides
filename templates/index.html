@@ -1,0 +1,947 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <!--begin:statistics section-->
+    <section class="position-relative" id="section">
+      <div class="container py-9 py-lg-11 position-relative">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-6 col-xl-5 order-lg-last mb-7 mb-lg-0">
+            <!--Heading-->
+            <h2 class="position-relative mb-5 display-5" data-aos="fade-up">
+              Providing <span class="text-gradient">Reliable</span> and <span class="text-gradient">Trustworthy</span>
+              Transport Solutions
+            </h2>
+            <!--text-->
+            <p class="mb-0 lead" data-aos="fade-up" data-aos-delay="100">
+              At our company, we are committed to delivering top-notch transportation services that you can trust.
+            </p>
+          </div>
+          <div class="col-lg-6 col-xl-5 order-lg-1">
+            <div class="row justify-content-center">
+              <div class="col-md-6 text-center mb-5" data-aos="fade-up">
+                <!--Numbers card-->
+                <div class="position-relative pb-2 rounded-4 overflow-hidden bg-white">
+                  <!--Numbers card bg-->
+                  <div class="position-absolute start-50 translate-middle-x bottom-0 bg-primary rounded-4 w-75 h-75">
+                  </div>
+                  <div class="position-relative bg-light p-4 rounded-4">
+                    <h2 class="display-5" data-aos data-countup='{"startVal":0,"suffix":"+","duration":"5"}'
+                      data-to="750" data-aos-id="countup:in">0</h2>
+                    <h6 class="mb-0">Vehicles sold</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                <!--Numbers card-->
+                <div class="position-relative pb-2 rounded-4 overflow-hidden bg-white">
+                  <!--Numbers card bg-->
+                  <div class="position-absolute start-50 translate-middle-x bottom-0 bg-danger rounded-4 w-75 h-75">
+                  </div>
+                  <div class="position-relative bg-light p-4 rounded-4">
+                    <h2 class="display-5" data-aos data-countup='{"startVal":0,"suffix":"+","duration":"5"}'
+                      data-to="1500" data-aos-id="countup:in">0</h2>
+                    <h6 class="mb-0">Vehicles Rented</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 text-center" data-aos="fade-up">
+                <!--Numbers card-->
+                <div class="position-relative pb-2 rounded-4 overflow-hidden bg-white" data-aos-delay="200">
+                  <!--Numbers card bg-->
+                  <div class="position-absolute start-50 translate-middle-x bottom-0 bg-success rounded-4 w-75 h-75">
+                  </div>
+                  <div class="position-relative bg-light p-4 rounded-4">
+                    <h2 class="display-5" data-aos data-countup='{"startVal":0,"suffix":"+","duration":"5"}'
+                      data-to="120" data-aos-id="countup:in">0</h2>
+                    <h6 class="mb-0">Vehicles Bought</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-5 mb-md-0 text-center" data-aos="fade-up" data-aos-delay="150">
+                <!--Numbers card-->
+                <div class="position-relative pb-2 rounded-4 overflow-hidden bg-white">
+                  <!--Numbers card bg-->
+                  <div class="position-absolute start-50 translate-middle-x bottom-0 bg-warning rounded-4 w-75 h-75">
+                  </div>
+                  <div class="position-relative bg-light p-4 rounded-4">
+                    <h2 class="display-5" data-aos data-countup='{"startVal":0,"suffix":"+","duration":"5"}'
+                      data-to="2250" data-aos-id="countup:in">0</h2>
+                    <h6 class="mb-0">Clients</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--end/:statistics section-->
+
+    <!--begin:About section-->
+    <section class="position-relative overflow-hidden">
+      <div class="container py-9 py-lg-11">
+        <div class="row mb-9 mb-lg-11 align-items-end">
+          <div class="col-lg-9 col-xl-8 mb-5 mb-lg-0">
+            <!--Subtitle-->
+            <h6 class="mb-3 text-muted">Who we are</h6>
+
+            <!--title-->
+            <h2 class="display-4 mb-0" data-aos="fade-left" data-aos-duration="400">
+              We are
+              dedicated to providing exceptional
+              vehicle rental and sales services.
+            </h2>
+          </div>
+
+          <!--Video popup-->
+          <div class="col-xl-4 col-lg-3">
+            <div class="d-flex align-items-center">
+              <!--Video button-->
+              <a href="https://vimeo.com/353105087" data-glightbox data-gallery="03"
+                class="btn btn-primary ms-lg-auto me-3 btn-circle-ripple width-8x height-8x rounded-circle d-flex justify-content-center align-items-center">
+                <i class="bx bx-play fs-1"></i>
+              </a>
+              <small>Watch our story</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="100" data-aos-duration="400">
+            <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/hand-shake.svg") }}"
+              class="width-7x mb-5 h-auto fill-primary" alt="">
+            <h5 class="mb-3">Building Relationships</h5>
+            <p class="mb-0">
+              At All Rides, we prioritize building strong relationships with our customers.
+              We believe in providing personalized service and creating long-term connections based on trust and
+              satisfaction.
+              Also we build relations with strategic partners to strengthen our position in the industry and
+              provide even greater value to our clients.
+            </p>
+          </div>
+          <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="150" data-aos-duration="400">
+            <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/target.svg") }}"
+              class="width-7x mb-5 h-auto fill-success" alt="">
+            <h5 class="mb-3">Mission & Vision</h5>
+            <p class="mb-0">
+              Our mission at All Rides is to provide reliable and high-quality vehicle rental and sales services
+              to our customers. We aim to exceed their expectations by offering a wide selection of vehicles,
+              excellent customer service, and competitive pricing. Our vision is to be the preferred choice for
+              individuals and businesses seeking exceptional transportation solutions.
+            </p>
+          </div>
+          <div class="col-md-4" data-aos="fade-right" data-aos-delay="200" data-aos-duration="400">
+            <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/magic-wand.svg") }}"
+              class="width-7x mb-5 h-auto fill-danger" alt="">
+            <h5 class="mb-3">Business Growth</h5>
+            <p class="mb-0">
+              At All Rides, we are dedicated to continuous growth and improvement. We have been expanding our
+              operations and enhancing our services to meet the evolving needs of our customers. We are committed
+              to staying ahead of the curve and driving innovation in the vehicle rental and sales market.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!--end/:About section-->
+
+    <!--begin: Services section-->
+    <section class="bg-light position-relative overflow-hidden">
+      <div class="container py-9 py-lg-11 position-relative">
+        <div class="row justify-content-between">
+          <div class="col-lg-5 mb-7 mb-lg-0">
+            <h6 class="mb-3 text-muted">What we offer</h6>
+            <h2 class="display-4 pe-lg-5 mb-5 mb-lg-8" data-aos="fade-left" data-aos-duration="400">
+              Elevate your vehicle journey with our comprehensive services
+            </h2>
+            <div class="w-lg-75">
+              <nav class="nav nav-pills nav-indicator-dark flex-column" role="tablist"
+                style="--bs-nav-pills-link-active-bg:white;--bs-nav-pills-link-active-color:var(--bs-primary)">
+                <a href="#rent" class="nav-link rounded-pill active px-5 fs-5 py-3 mb-1"
+                  data-bs-toggle="tab"><span>Rent</span></a>
+                <a href="#buy" class="nav-link rounded-pill fs-5 px-5 py-3 mb-1"
+                  data-bs-toggle="tab"><span>Buy</span></a>
+                <a href="#sell" class="nav-link rounded-pill fs-5 px-5 py-3 mb-1"
+                  data-bs-toggle="tab"><span>Sell</span></a>
+              </nav>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="tab-content">
+              <div class="tab-pane active fade show" id="rent">
+                <div class="position-relative">
+                  <h3 class="mb-3">Rent</h3>
+                  <p class="mb-5">
+                    Experience the freedom of renting a wide range of vehicles from us.
+                    Whether you need a compact car for city exploration, a spacious SUV for a family trip,
+                    or a luxurious sedan for a special occasion, we have the perfect rental solution to meet
+                    your needs. Our rental process is hassle-free, ensuring a seamless experience from booking
+                    to returning the vehicle. Discover the joy of exploring new destinations with our reliable
+                    and well-maintained rental fleet.
+                  </p>
+                  <ul class="list-unstyled mb-0">
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Compact cars for urban travel
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Spacious SUVs for family adventures
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Reliable trucks for transporting goods
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Versatile moving vans for your relocation needs
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Thrilling motorcycles for an exhilarating ride
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="buy">
+                <div class="position-relative">
+                  <h3 class="mb-3">Buy</h3>
+                  <p class="mb-5">
+                    Looking to buy a vehicle? We offer a wide selection of vehicles for sale, including cars,
+                    SUVs, trucks, moving vans, motorcycles, and more. Whether you're seeking a reliable daily driver,
+                    a sturdy workhorse, or a thrilling ride, we have the perfect vehicle to match your preferences.
+                    Our experienced team will assist you throughout the buying process, ensuring a smooth and satisfying
+                    experience. Trust us to help you find your dream vehicle at a competitive price.
+                  </p>
+                  <ul class="list-unstyled mb-0">
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Wide selection of vehicles for sale
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Assistance throughout the buying process
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Competitive prices for quality vehicles
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="sell">
+                <div class="position-relative">
+                  <h3 class="mb-3">Sell</h3>
+                  <p class="mb-5">
+                    Looking to sell your vehicle? We can help! Our dedicated team ensures a smooth
+                    and transparent selling process. Whether you have a car, truck, van, or any other
+                    type of vehicle, we offer competitive prices and handle all the paperwork for you.
+                    Our goal is to make the selling process convenient and hassle-free, providing you
+                    with a fair value for your vehicle. Trust us to handle the details and get the best
+                    deal when selling your vehicle.
+                  </p>
+                  <ul class="list-unstyled mb-0">
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Competitive prices for your vehicle
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Hassle-free paperwork process
+                      </p>
+                    </li>
+                    <li class="d-flex py-2 align-items-center">
+                      <div class="me-3">
+                        <i class="bx bx-check fs-4 text-muted"></i>
+                      </div>
+                      <p class="mb-0">
+                        Quick and transparent selling experience
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/end: Services section-->
+
+    <!--Call to action-->
+    <div class="container py-11">
+      <div class="px-4 rounded-3 shadow-lg py-6 px-lg-5 py-lg-7 bg-gradient-secondary 
+            text-white position-relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+        <!--Shape-->
+        <svg class="position-absolute end-0 bottom-0 mb-4 text-success" width="200" height="400"
+          preserveAspectRatio="none" viewBox="0 0 150 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M150 300C130.302 300 110.796 296.12 92.5975 288.582C74.3986 281.044 57.8628
+                          269.995 43.934 256.066C30.0052 242.137 18.9563 225.601 11.4181 207.403C3.87986
+                          189.204 -6.2614e-07 169.698 0 150C6.2614e-07 130.302 3.87987 110.796 11.4181
+                            92.5975C18.9563 74.3987 30.0052 57.8628 43.934 43.934C57.8628 30.0052 74.3987
+                            18.9563 92.5975 11.4181C110.796 3.87986 130.302 3.51961e-06 150 5.00679e-06L150
+                              37.5C135.226 37.5 120.597 40.4099 106.948 46.0636C93.299 51.7172 80.8971 60.0039
+                              70.4505 70.4505C60.0039 80.8971 51.7172 93.299 46.0636 106.948C40.4099 120.597
+                                37.5 135.226 37.5 150C37.5 164.774 40.4099 179.403 46.0636 193.052C51.7172
+                                206.701 60.0039 219.103 70.4505 229.55C80.8971 239.996 93.299 248.283 106.948
+                                  253.936C120.597 259.59 135.226 262.5 150 262.5V300Z" fill="currentColor"></path>
+        </svg>
+
+        <div class="row align-items-end position-relative">
+          <div class="col-lg-6 col-xl-7">
+            <h5 class="text-muted mb-4">Let's start riding</h5>
+            <h1 class="mb-5 mb-md-0 display-5">Buy and Rent vehicles with ease</h1>
+          </div>
+          <div class="col-lg-6 col-xl-5 text-lg-end">
+            <a href="#!" class="btn btn-primary btn-lg me-2 mb-2 mb-lg-0">Contact sales</a>
+            <a href="#!" class="btn btn-gray-200 btn-lg">Purchase Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.Call to action end-->
+
+    <!--/begin: Newly Added section-->
+    <section class="pt-1">
+      <div class="container py-9 py-lg-11">
+        <div class="d-flex mb-6 align-items-center">
+          <h3 class="mb-0">Newly Added</h3>
+          <div class="flex-grow-1 border-top mx-3"></div>
+          <a href="#!" class="flex-shrink-0 link-hover-underline">View All</a>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
+            <!--Card-vehicle-1-->
+            <div class="position-relative">
+              <a href="#!" class="d-block card-hover rounded overflow-hidden">
+                <!--Image-->
+                <img src="{{ url_for("static", filename="assets/img/vehicles/car1.avif") }}" class="img-fluid img-zoom rounded" alt="">
+                <!--overlay-->
+                <div class="position-absolute start-0 top-0 w-100 h-100 bg-gradient-dark opacity-50">
+                </div>
+                <!--Badge-->
+                <div class="position-absolute start-0 top-0 w-100 pt-3 px-3">
+                  <span class="badge bg-white text-primary rounded-pill">For Sale</span>
+                </div>
+                <div
+                  class="text-white d-flex justify-content-between w-100 px-3 pb-4 position-absolute start-0 bottom-0 w-100 h-100 align-items-end">
+                  <div class="flex-grow-1 overflow-hidden pe-4">
+                    <!--Location and Price-->
+                    <p class="mb-0 d-flex align-items-center">
+                      <i class="bx bxs-map me-2"></i>
+                      <span class="small text-truncate">Rome</span>
+                      <span class="ms-auto">$35,000</span>
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <div class="card-body pt-4">
+                <a href="#!" class="text-dark d-block mb-4">
+                  <h5>2022 Toyota Camry</h5>
+                </a>
+                <!--Vehicle Details-->
+                <div class="row">
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">2022</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">July</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">10,000 km</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">Petrol</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">180 cv</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">Automatic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
+            <!--Card-vehicle-2-->
+            <div class="position-relative">
+              <a href="#!" class="d-block rounded card-hover overflow-hidden position-relative">
+                <!--Image-->
+                <img src="{{ url_for("static", filename="assets/img/vehicles/car2.jpg") }}" class="img-fluid img-zoom rounded" alt="">
+                <!--overlay-->
+                <div class="position-absolute start-0 top-0 w-100 h-100 bg-gradient-dark opacity-75">
+                </div>
+                <!--Badge-->
+                <div class="position-absolute start-0 top-0 w-100 pt-3 px-3">
+                  <span class="badge bg-info rounded-pill">For Rent</span>
+                </div>
+                <div
+                  class="text-white d-flex justify-content-between w-100 px-3 pb-4 position-absolute start-0 bottom-0 w-100 h-100 align-items-end">
+                  <div class="flex-grow-1 overflow-hidden pe-4">
+                    <!--Location and Price-->
+                    <p class="mb-0 d-flex align-items-center">
+                      <i class="bx bxs-map me-2"></i>
+                      <span class="small text-truncate">Milano</span>
+                      <span class="ms-auto">$160/day</span>
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <div class="card-body pt-4">
+                <a href="#!" class="text-dark d-block mb-4">
+                  <h5>2021 Honda Civic</h5>
+                </a>
+                <!--Vehicle Details-->
+                <div class="row">
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">2021</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">June</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">8,500 km</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">Petrol</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">150 cv</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">Automatic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
+            <!--Card-vehicle-3-->
+            <div class="position-relative">
+              <a href="#!" class="d-block rounded card-hover overflow-hidden position-relative">
+                <!--Image-->
+                <img src="{{ url_for("static", filename="assets/img/vehicles/motorcycle1.jpg") }}" class="img-fluid img-zoom rounded" alt="">
+                <!--overlay-->
+                <div class="position-absolute start-0 top-0 w-100 h-100 bg-gradient-dark opacity-50">
+                </div>
+                <!--Badge-->
+                <div class="position-absolute start-0 top-0 w-100 pt-3 px-3">
+                  <span class="badge bg-white text-primary rounded-pill">For Sale</span>
+                </div>
+                <div
+                  class="text-white d-flex justify-content-between w-100 px-3 pb-4 position-absolute start-0 bottom-0 w-100 h-100 align-items-end">
+                  <div class="flex-grow-1 overflow-hidden pe-4">
+                    <!--Location and Price-->
+                    <p class="mb-0 d-flex align-items-center">
+                      <i class="bx bxs-map me-2"></i>
+                      <span class="small text-truncate">Napoles</span>
+                      <span class="ms-auto">$12,900</span>
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <div class="card-body pt-4">
+                <a href="#!" class="text-dark d-block mb-4">
+                  <h5>2020 Yamaha YZF-R6</h5>
+                </a>
+                <!--Vehicle Details-->
+                <div class="row">
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">2020</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">September</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">6,000 km</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">Petrol</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">160 cv</span>
+                  </div>
+                  <div class="col-4 d-flex align-items-center">
+                    <i class="bx bx-message-square-check me-2"></i>
+                    <span class="small">Manual</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/end: Newly Added section-->
+
+    <!--Call to action - subscription-->
+    <section class="bg-gradient-secondary text-white">
+      <div class="container py-9 ">
+        <div class="row">
+          <div class="col-lg-6 col-xl-5 col-md-8 mx-auto">
+            <!--Heading-->
+            <h2 class="h1 text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+              Subscribe
+            </h2>
+            <!--text-->
+            <p class="mb-5 lead text-center" data-aos="fade-up" data-aos-delay="150">
+              The latest updates, offers and promotions sent direct to your inbox every month.
+            </p>
+            <!--Newsletter form-->
+            <form data-aos="fade-up" data-aos-delay="300" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <input type="text" required class="form-control" placeholder="Name">
+                <span class="invalid-feedback">Please enter your name</span>
+              </div>
+              <div class="mb-3">
+                <input type="email" required class="form-control" placeholder="Email Address">
+                <span class="invalid-feedback">Please enter a valid email</span>
+              </div>
+              <div class="mb-3 d-grid">
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </div>
+            </form>
+            <!--Info text-->
+            <p class="mb-0 text-muted small" data-aos="fade-up" data-aos-delay="200">
+              We’ll never share your details. See our <a href="#!" class="border-bottom border-light ">Privacy
+                Policy</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/.section Call to action end-->
+
+    <!--begin: Categories section-->
+    <section class="position-relative">
+      <div class="container py-9 py-lg-11">
+        <div class="row mb-5 mb-lg-9 justify-content-between align-items-end">
+          <div class="col-lg-8 mx-auto text-center">
+            <span class="d-block mb-4 text-primary" data-aos="fade-up">Vehicles Categories</span>
+            <h2 class="display-6 mb-0" data-aos="fade-up">Explore our <span class="text-decoration-underline" data-aos
+                data-countup='{"startVal": 0,"suffix":"+"}' data-to="300" data-aos-id="countup:in">0</span> vehicles
+              inventory
+            </h2>
+          </div>
+        </div>
+        <!--Categories row-->
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
+            <!--Card-cayegory-1-->
+            <div class="position-relative">
+              <a href="#!" class="d-block card-hover rounded overflow-hidden">
+                <!--Image-->
+                <img src="{{ url_for("static", filename="assets/img/vehicles-category/car-types.jpg") }}" class="img-fluid img-zoom rounded" alt=""
+                  style="filter: none;">
+                <!--overlay-->
+                <div class="position-absolute start-0 top-0 w-100 h-100">
+                </div>
+              </a>
+            </div>
+            <div class="card-body pt-4">
+              <a href="#!" class="text-dark d-block mb-4">
+                <h5>Cars</h5>
+                <h6>150 Available</h6>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
+            <!--Card-cayegory-2-->
+            <div class="position-relative">
+              <a href="#!" class="d-block card-hover rounded overflow-hidden">
+                <!--Image-->
+                <img src="{{ url_for("static", filename="assets/img/vehicles-category/motorcycles-types.jpg") }}" class="img-fluid img-zoom rounded" alt="">
+                <!--overlay-->
+                <div class="position-absolute start-0 top-0 w-100 h-100">
+                </div>
+              </a>
+            </div>
+            <div class="card-body pt-4">
+              <a href="#!" class="text-dark d-block mb-4">
+                <h5>Motorcycles</h5>
+                <h6>250 Available</h6>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
+            <!--Card-cayegory-3-->
+            <div class="position-relative">
+              <a href="#!" class="d-block card-hover rounded overflow-hidden">
+                <!--Image-->
+                <img src="{{ url_for("static", filename="assets/img/vehicles-category/trucks-types.jpg") }}" class="img-fluid img-zoom rounded" alt="">
+                <!--overlay-->
+                <div class="position-absolute start-0 top-0 w-100 h-100">
+                </div>
+              </a>
+            </div>
+            <div class="card-body pt-4">
+              <a href="#!" class="text-dark d-block mb-4">
+                <h5>Trucks</h5>
+                <h6>100 Available</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+    </section>
+    <!--end: Categories section-->
+
+    <!--begin: Download App section-->
+    <section class="position-relative overflow-hidden">
+      <div class="container position-relative py-9 py-lg-11">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-6 col-sm-8 col-xl-5 mx-auto mx-md-0 mb-5 mb-md-0 order-md-last position-relative">
+            <div class="position-relative ps-4 z-index-1" data-aos="fade-left">
+              <!--Parallax-element-->
+              <div class="position-absolute end-0 top-50 translate-middle-y width-7x h-auto">
+                <div class="rellax" data-rellax-speed="-2" data-rellax-percentage=".9">
+                  <img src="{{ url_for("static", filename="assets/img/vectors/pattern-dots.svg") }}" alt="" class="fill-warning w-100 h-auto">
+                </div>
+              </div>
+              <div class="width-19x mx-auto p-1 position-relative">
+                <img src="{{ url_for("static", filename="assets/img/mobile-app/screen-5.jpeg") }}" alt=""
+                  class="img-fluid shadow p-1 bg-secondary rounded-4">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-5 text-center text-lg-start position-relative z-index-1 order-md-1"
+            data-aos="fade-right">
+            <h2 class="mb-4 display-4">Coming Soon: Our Innovative All Rides App</h2>
+            <p class="mb-5">
+              Get ready to revolutionize your vehicle experience with our upcoming mobile app.
+              We are hard at work developing a cutting-edge app that will enhance your car rental and
+              buying journey like never before. Stay tuned for an app that will make renting, buying,
+              and selling vehicles more convenient, efficient, and enjoyable. <br>
+              <br>
+              Be among the first to experience the future of vehicle solutions. Sign up for updates and
+              be notified as soon as our app is launched. Get ready to take your vehicle journey to new
+              heights with our game-changing app!
+            </p>
+            <a href="#!" class="btn btn-primary btn-lg hover-lift">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--end: Download App section-->
+
+    <!--begin: Testimonials section-->
+    <section class="position-relative bg-white overflow-hidden">
+      <div class="container position-relative py-9 py-lg-11">
+        <div class="row mb-4 mb-lg-5 align-items-end justify-content-between">
+          <div class="col-md-8 mb-4 mb-md-0">
+            <h6 class="mb-3 text-muted">Testimonials</h6>
+            <h2 class="mb-4 display-4">Clients who love
+              <span class="d-block">our
+                <span class="d-inline-block text-primary"
+                  data-typed='{"strings": ["Quality...", "Service...", "Expertise...", "Vehicles..."]}'></span>
+              </span>
+            </h2>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <div class="position-relative d-flex justify-content-md-end align-items-center">
+              <!--Buttons navigation-->
+              <div
+                class="swiper-testimonials-button-prev start-0 swiper-button-prev mt-0 rounded-end-0 rounded-4 position-relative width-5x height-5x me-1 rounded-circle bg-transparent text-dark border">
+              </div>
+              <div
+                class="swiper-testimonials-button-next swiper-button-next mt-0 position-relative rounded-start-0 rounded-4 end-0 width-5x height-5x rounded-circle bg-transparent text-dark border">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+
+            <!--Swiper slider testimonials-->
+            <div class="swiper-container swiper-testimonials">
+              <div class="swiper-wrapper">
+                <!--Slide-->
+                <div class="swiper-slide">
+                  <div class="position-relative">
+                    <div class="mb-4 flex-grow-1 px-3 px-4 py-5 shadow rounded-4">
+                      <div class="mb-3 text-warning">
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                      </div>
+                      <p class="fw-semibold fs-5 mb-0">
+                        “Their exceptional service and wide vehicle selection really impressed us.
+                        From day one, their team has provided excellent support and delivered a seamless user
+                        experience.
+                        We can't wait to start using our new vehicle!”
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start">
+
+                      <div class="position-relative me-3">
+                        <!--Avatar Image-->
+                        <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/4.jpg") }}"
+                          alt="">
+                      </div>
+                      <div>
+                        <h5 class="mb-0">Nala Goins</h5>
+                        <small class="text-muted">Paris</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Slide-->
+                <div class="swiper-slide">
+                  <div class="position-relative">
+                    <div class="mb-4 flex-grow-1 px-3 px-4 py-5 shadow rounded-4">
+                      <div class="mb-3 text-warning">
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                      </div>
+                      <p class="fw-semibold fs-5 mb-0">
+                        "I recently rented a vehicle from All Rides for a road trip, and I was impressed with the
+                        quality
+                        and reliability of their vehicles. The entire process, from booking to returning the vehicle,
+                        was seamless.
+                        I highly recommend All Rides for anyone in need of a reliable rental car."
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start">
+
+                      <div class="position-relative me-3">
+                        <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/5.jpg") }}"
+                          alt="">
+                      </div>
+                      <div>
+                        <h5 class="mb-0">Maria Peltola</h5>
+                        <small class="text-muted">Toronto</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Slide-->
+                <div class="swiper-slide">
+                  <div class="position-relative">
+                    <div class="mb-4 flex-grow-1 px-3 px-4 py-5 shadow rounded-4">
+                      <div class="mb-3 text-warning">
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                      </div>
+                      <p class="fw-semibold fs-5 mb-0">
+                        "I purchased a vehicle from All Rides and couldn't be happier with my experience.
+                        The staff was knowledgeable and helpful in guiding me through the purchasing process.
+                        The vehicle I bought was in excellent condition, and I feel confident in its reliability.
+                        Thank you, All Rides, for providing excellent service!"
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start">
+
+                      <div class="position-relative me-3">
+                        <!--Avatar Image-->
+                        <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/6.jpg") }}"
+                          alt="">
+                      </div>
+                      <div>
+                        <h5 class="mb-0">Adam Macofey</h5>
+                        <small class="text-muted">Stockholm</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Slide-->
+                <div class="swiper-slide">
+                  <div class="position-relative">
+                    <div class="mb-4 flex-grow-1 px-3 px-4 py-5 shadow rounded-4">
+                      <div class="mb-3 text-warning">
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                      </div>
+                      <p class="fw-semibold fs-5 mb-0">
+                        "I've been a loyal customer of All Rides for several years now, and they never disappoint.
+                        Whether I need to rent a car for a weekend getaway or purchase a new vehicle, they always have a
+                        wide
+                        selection to choose from. The customer service is top-notch, and their prices are competitive.
+                        I highly recommend All Rides for all your vehicle needs."
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start">
+
+                      <div class="position-relative me-3">
+                        <!--Avatar Image-->
+                        <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/7.jpg") }}"
+                          alt="">
+                      </div>
+                      <div>
+                        <h5 class="mb-0">Alex Lee</h5>
+                        <small class="text-muted">Barcelona</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Slide-->
+                <div class="swiper-slide">
+                  <div class="position-relative">
+                    <div class="mb-4 flex-grow-1 px-3 px-4 py-5 shadow rounded-4">
+                      <div class="mb-3 text-warning">
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                      </div>
+                      <p class="fw-semibold fs-5 mb-0">
+                        "I recently rented a vehicle from All Rides for a family vacation, and I was impressed with
+                        their professionalism and attention to detail. The vehicle was clean, well-maintained, and
+                        comfortable.
+                        The entire rental process was smooth, and the staff went above and beyond to ensure our
+                        satisfaction.
+                        I will definitely be using All Rides for future rentals."
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start">
+
+                      <div class="position-relative me-3">
+                        <!--Avatar Image-->
+                        <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/8.jpg") }}"
+                          alt="">
+                      </div>
+                      <div>
+                        <h5 class="mb-0">Jayden Massey</h5>
+                        <small class="text-muted">Warsaw</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Slide-->
+                <div class="swiper-slide">
+                  <div class="position-relative">
+                    <div class="mb-4 flex-grow-1 px-3 px-4 py-5 shadow rounded-4">
+                      <div class="mb-3 text-warning">
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                        <i class="bx bx-star small"></i>
+                      </div>
+                      <p class="fw-semibold fs-5 mb-0">
+                        "I had a fantastic experience renting a vehicle from All Rides. The process was simple,
+                        and the staff was friendly and helpful. The vehicle I rented was in excellent condition, and it
+                        made my trip enjoyable and hassle-free. I appreciate the professionalism and reliability of
+                        All Rides, and I will definitely be a returning customer."
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start">
+
+                      <div class="position-relative me-3">
+                        <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/9.jpg") }}"
+                          alt="">
+                      </div>
+                      <div>
+                        <h5 class="mb-0">Raymond Atkins</h5>
+                        <small class="text-muted">Los Angeles</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/end: Testimonials section-->
+
+    <!--/begin: Map section-->
+    <section class="position-relative overflow-hidden" id="contact">
+      <div class="container-fluid pb-9 pb-lg-0 ps-lg-0">
+        <div class="row align-items-center">
+          <div class="col-lg-8 mb-7 mb-lg-0">
+            <div id="map" style="height: 440px;"></div>
+          </div>
+          <div class="col-lg-4 col-xl-3 mx-xl-auto">
+            <h2 class="display-6 text-capitalize mb-2" data-aos="fade-up">Office Locations</h2>
+            <hr>
+            <h4 class="" data-aos="fade-up">Headquarters:</h4>
+            <p class="fs-5" data-aos="fade-up">
+              Viale Enrico Forlanini, 86<br>Milano MI, Itália
+            </p>
+            <hr>
+            <h4 class="" data-aos="fade-up">Branch Office:</h4>
+            <p class="fs-5" data-aos="fade-up">
+              Via Marsala, 53<br> Roma RM, Itália
+            </p>
+            <hr>
+            <p class="fs-5" data-aos="fade-up">
+              New location opening soon!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/end: Map section-->
+{% endblock %}
