@@ -32,10 +32,10 @@ Include instructions on how to install and set up your project locally. For exam
 3. Create a virtual environment: `py -m venv venv`
 4. Activate the virtual environment:
    - For Windows: `venv\Scripts\activate`
-5. Install the required packages: `pip install`
+5. Install flask: `pip install flask`
 6. Set up the database:
    - Create a MySQL database
-7. Start the development server: `flask run`
+7. Start the development server: `flask run --debug`
 
 ## Usage
 
