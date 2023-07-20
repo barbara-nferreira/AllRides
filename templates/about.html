@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<section class="bg-dark text-white position-relative">
+    <div class="container pt-4 pb-9 pb-lg-11 position-relative z-index-1">
+    </div>
+</section>
+<!--begin/:who we are section-->
+<section class="position-relative">
+    <div class="container position-relative py-9">
+        <div class="row pt-5 pt-lg-9 align-items-end">
+            <div class="col-12 col-xl-9 mx-auto text-center">
+                <h1 class="display-2 mb-2">Who we are</h1>
+                <p class="fs-5 w-lg-60 mb-0 mx-auto">
+                    At our company, we are committed to delivering 
+                    outstanding vehicle solutions, offering both 
+                    top-notch rentals and sales services to meet 
+                    all your transportation needs.
+                </p>
+            </div>
+
+        </div>
+        <!--/.row-->
+    </div>
+    <!--/.content-->
+</section>
+<section class="position-relative overflow-hidden">
+    <div class="container py-9 py-lg-4">
+      <div class="row mb-2 mb-lg-2 ">
+        <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="100" data-aos-duration="400">
+          <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/hand-shake.svg") }}"
+            class="width-7x mb-5 h-auto fill-primary" alt="">
+          <h5 class="mb-3">Building Relationships</h5>
+          <p class="mb-0">
+            At All Rides, we prioritize building strong relationships with our customers.
+            We believe in providing personalized service and creating long-term connections based on trust and
+            satisfaction.
+            Also we build relations with strategic partners to strengthen our position in the industry and
+            provide even greater value to our clients.
+          </p>
+        </div>
+        <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="150" data-aos-duration="400">
+          <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/target.svg") }}"
+            class="width-7x mb-5 h-auto fill-success" alt="">
+          <h5 class="mb-3">Mission & Vision</h5>
+          <p class="mb-0">
+            Our mission at All Rides is to provide reliable and high-quality vehicle rental and sales services
+            to our customers. We aim to exceed their expectations by offering a wide selection of vehicles,
+            excellent customer service, and competitive pricing. Our vision is to be the preferred choice for
+            individuals and businesses seeking exceptional transportation solutions.
+          </p>
+        </div>
+        <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="200" data-aos-duration="400">
+          <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/magic-wand.svg") }}"
+            class="width-7x mb-5 h-auto fill-danger" alt="">
+          <h5 class="mb-3">Business Growth</h5>
+          <p class="mb-0">
+            At All Rides, we are dedicated to continuous growth and improvement. We have been expanding our
+            operations and enhancing our services to meet the evolving needs of our customers. We are committed
+            to staying ahead of the curve and driving innovation in the vehicle rental and sales market.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!--end/:who we are section-->
+
+  <!--begin: Services section-->
+  <section class="bg-light position-relative overflow-hidden">
+    <div class="container py-9 py-lg-11 position-relative">
+      <div class="row justify-content-between">
+        <div class="col-lg-5 mb-7 mb-lg-0">
+          <h6 class="mb-3 text-muted">What we offer</h6>
+          <h2 class="display-4 pe-lg-5 mb-5 mb-lg-8" data-aos="fade-left" data-aos-duration="400">
+            Elevate your vehicle journey with our comprehensive services
+          </h2>
+          <div class="w-lg-75">
+            <nav class="nav nav-pills nav-indicator-dark flex-column" role="tablist"
+              style="--bs-nav-pills-link-active-bg:white;--bs-nav-pills-link-active-color:var(--bs-primary)">
+              <a href="#rent" class="nav-link rounded-pill active px-5 fs-5 py-3 mb-1"
+                data-bs-toggle="tab"><span>Rent</span></a>
+              <a href="#buy" class="nav-link rounded-pill fs-5 px-5 py-3 mb-1"
+                data-bs-toggle="tab"><span>Buy</span></a>
+              <a href="#sell" class="nav-link rounded-pill fs-5 px-5 py-3 mb-1"
+                data-bs-toggle="tab"><span>Sell</span></a>
+            </nav>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="tab-content">
+            <div class="tab-pane active fade show" id="rent">
+              <div class="position-relative">
+                <h3 class="mb-3">Rent</h3>
+                <p class="mb-5">
+                  Experience the freedom of renting a wide range of vehicles from us.
+                  Whether you need a compact car for city exploration, a spacious SUV for a family trip,
+                  or a luxurious sedan for a special occasion, we have the perfect rental solution to meet
+                  your needs. Our rental process is hassle-free, ensuring a seamless experience from booking
+                  to returning the vehicle. Discover the joy of exploring new destinations with our reliable
+                  and well-maintained rental fleet.
+                </p>
+                <ul class="list-unstyled mb-0">
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Compact cars for urban travel
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Spacious SUVs for family adventures
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Reliable trucks for transporting goods
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Versatile moving vans for your relocation needs
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Thrilling motorcycles for an exhilarating ride
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="buy">
+              <div class="position-relative">
+                <h3 class="mb-3">Buy</h3>
+                <p class="mb-5">
+                  Looking to buy a vehicle? We offer a wide selection of vehicles for sale, including cars,
+                  SUVs, trucks, moving vans, motorcycles, and more. Whether you're seeking a reliable daily driver,
+                  a sturdy workhorse, or a thrilling ride, we have the perfect vehicle to match your preferences.
+                  Our experienced team will assist you throughout the buying process, ensuring a smooth and satisfying
+                  experience. Trust us to help you find your dream vehicle at a competitive price.
+                </p>
+                <ul class="list-unstyled mb-0">
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Wide selection of vehicles for sale
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Assistance throughout the buying process
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Competitive prices for quality vehicles
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="sell">
+              <div class="position-relative">
+                <h3 class="mb-3">Sell</h3>
+                <p class="mb-5">
+                  Looking to sell your vehicle? We can help! Our dedicated team ensures a smooth
+                  and transparent selling process. Whether you have a car, truck, van, or any other
+                  type of vehicle, we offer competitive prices and handle all the paperwork for you.
+                  Our goal is to make the selling process convenient and hassle-free, providing you
+                  with a fair value for your vehicle. Trust us to handle the details and get the best
+                  deal when selling your vehicle.
+                </p>
+                <ul class="list-unstyled mb-0">
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Competitive prices for your vehicle
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Hassle-free paperwork process
+                    </p>
+                  </li>
+                  <li class="d-flex py-2 align-items-center">
+                    <div class="me-3">
+                      <i class="bx bx-check fs-4 text-muted"></i>
+                    </div>
+                    <p class="mb-0">
+                      Quick and transparent selling experience
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/end: Services section-->
+{% endblock %}
