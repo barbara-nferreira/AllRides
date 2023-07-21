@@ -46,6 +46,13 @@ def listing():
 
     return render_template('listing.html', vehicles=vehicles, category=category, is_for_rent=is_for_rent, location=location)
 
+@app.route('/details/<int:vehicle_id>')
+def details(vehicle_id):
+    vehicle = session.query(Vehicle).filter_by(vehicle_id=vehicle_id).first()
+    if not vehicle:
+        return "Vehicle not found"
+
+    return render_template('vehicle-details.html', vehicle=vehicle)
 
 if __name__ == '__main__':
     app.run(debug=True)

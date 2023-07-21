@@ -125,7 +125,7 @@
         </div>
         <div class="col-lg-6 col-xl-5 text-lg-end">
           <a href="#!" class="btn btn-primary btn-lg me-2 mb-2 mb-lg-0">Contact Us</a>
-          <a href="#!" class="btn btn-gray-200 btn-lg">Purchase Now</a>
+          <a href="/listing" class="btn btn-gray-200 btn-lg">Purchase Now</a>
         </div>
       </div>
     </div>
@@ -145,7 +145,7 @@
         <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
           <!--Card-vehicle-->
           <div class="position-relative">
-            <a href="#!" class="d-block card-hover rounded overflow-hidden">
+            <a href="/details/{{ vehicle.vehicle_id }}" class="d-block card-hover rounded overflow-hidden">
               <!--Image-->
               <img src="{{ url_for("static", filename=vehicle.image_url) }}" class="img-fluid img-zoom rounded" alt="" style="height: 250px; width: auto;">
               <!--overlay-->
@@ -176,7 +176,7 @@
               </div>
             </a>
             <div class="card-body pt-4">
-              <a href="#!" class="text-dark d-block mb-4">
+              <a href="/details/{{ vehicle.vehicle_id }}" class="text-dark d-block mb-4">
                 <h5>{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</h5>
               </a>
               <!--Vehicle Details-->
@@ -212,7 +212,7 @@
   <!--/end: Newly Added section-->
 
   <!--begin/:Call to action - subscription-->
-  <section class="bg-gradient-secondary text-white">
+  <section id="subscription-section" class="bg-gradient-secondary text-white">
     <div class="container py-9 ">
       <div class="row">
         <div class="col-lg-6 col-xl-5 col-md-8 mx-auto">
@@ -353,7 +353,7 @@
             be notified as soon as our app is launched. Get ready to take your vehicle journey to new
             heights with our game-changing app!
           </p>
-          <a href="#!" class="btn btn-primary btn-lg hover-lift">Sign Up</a>
+          <a href="#subscription-section" class="btn btn-primary btn-lg hover-lift">Subscribe</a>
         </div>
       </div>
     </div>
