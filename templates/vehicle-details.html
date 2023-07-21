@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block title %}Vehicle Details{% endblock %}
+
+{% block content %}
+<section class="bg-dark text-white position-relative">
+    <div class="container pt-4 pb-9 pb-lg-11 position-relative z-index-1">
+    </div>
+</section>
+<!--hero-->
+<section class="position-relative">
+    <div class="container pt-2 pb-9 position-relative z-index-1">
+        <div class="row pt-7 pt-lg-12 justify-content-between align-items-center">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <h4 class="text-muted mb-4">{{ vehicle.location }}</h4>
+                <h1 class="display-2 font-serif fw-bold mb-0">
+                    {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+                </h1>
+            </div>
+            <div class="col-lg-4">
+                <div class="d-flex align-items-center justify-content-lg-end">
+                    <a href="#!" class="btn btn-light flex-shrink-0 me-3"><i class="bx bxs-bookmark me-2"></i> Save</a>
+                    <!--Share options-->
+                <div class="dropdown text-end">
+                    <a href="#" data-bs-toggle="dropdown" class="btn btn-light">
+                        <i class="bx bx-share-alt fs-4 me-2"></i> Share this Property
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end mt-2">
+                        <a href="#!" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <i class="bx bx-link fs-5 me-2"></i>
+                                <span>Copy link</span>
+                            </div>
+                          </a>
+                           <a href="#!" class="dropdown-item">
+                              <div class="d-flex align-items-center">
+                                  <i class="bx bxl-facebook fs-5 me-2"></i>
+                                  <span>Share via facebook</span>
+                              </div>
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <i class="bx bxl-twitter fs-5 me-2"></i>
+                                    <span>Share via Twitter</span>
+                                </div>
+                              </a>
+                              <a href="#!" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <i class="bx bxl-linkedin fs-5 me-2"></i>
+                                    <span>Share via linkedin</span>
+                                </div>
+                              </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    
+    <div class="container-fluid position-relative">
+        
+        <div class="row">
+            <div class="col-sm-6 mb-4">
+              <a href="{{ url_for("static", filename=vehicle.image_url) }}" data-glightbox data-gallery="gallery02" class="d-block">
+                <img src="{{ url_for("static", filename=vehicle.image_url) }}" class="img-fluid rounded-4 shadow-lg" alt="">
+              </a>
+            </div>
+            <div class="col-6 mb-4">
+                <a href="{{ url_for("static", filename=vehicle.image_url) }}" data-glightbox data-gallery="gallery02" class="d-block">
+                  <img src="{{ url_for("static", filename=vehicle.image_url) }}" class="img-fluid rounded-4 shadow-lg" alt="">
+                </a>
+              </div>
+              <div class="col-6 mb-4">
+                <a href="{{ url_for("static", filename=vehicle.image_url) }}" data-glightbox data-gallery="gallery02" class="d-block">
+                  <img src="{{ url_for("static", filename=vehicle.image_url) }}" class="img-fluid rounded-4 shadow-lg" alt="">
+                </a>
+              </div>
+              <div class="col-sm-6 mb-4">
+                <a href="{{ url_for("static", filename=vehicle.image_url) }}" data-glightbox data-gallery="gallery02" class="d-block">
+                  <img src="{{ url_for("static", filename=vehicle.image_url) }}" class="img-fluid rounded-4 shadow-lg" alt="">
+                </a>
+              </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container py-9 py-lg-11">
+        <div class="row mb-5 align-items-center">
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">ID:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.vehicle_id }}</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">Type of Listing:</small>
+                {% if vehicle.available_for_rent %}
+                <p class="lead mb-0 pb-4 border-bottom">For Rent</p>
+                {% else %}
+                <p class="lead mb-0 pb-4 border-bottom">For Sale</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">Vehicle Category:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.category.name }}</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">Location:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.location }}</p>
+            </div>
+            <div class="col-12 mb-4 col-sm-8">
+                <small class="text-muted block">Price:</small>
+                {% if vehicle.available_for_purchase %}
+                <p class="display-3 mb-0 pb-4 border-bottom">{{ vehicle.purchase_price }}€</p>
+                {% else %}
+                <p class="display-3 mb-0 pb-4 border-bottom">{{ vehicle.rental_price_per_day }}€/day</p>
+                {% endif %}
+            </div>
+            <div class="col-12 col-sm-4 mb-4">
+                <a href="#!" class="btn w-100 d-block btn-info">Arrange a Test Drive</a>
+            </div>
+            <div class="col-sm-4 mb-4 col-6">
+                <small class="text-muted block">Make:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.make }}</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6">
+                <small class="text-muted block">Model:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.model }}</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6">
+                <small class="text-muted block">Year:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.year }}</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">Kilometer:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.kilometers }}Km</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">Horsepower:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.horsepower }}cv</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">Fuel Type:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.fuel_type }}</p>
+            </div>
+            <div class="col-sm-4 mb-4 col-6 col-lg-3">
+                <small class="text-muted block">Transmisson:</small>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.transmission }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="mb-7 mb-md-0">
+                <small class="d-block text-muted mb-2">Description:</small>
+                <p>
+                    Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups  the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum.
+                </p>
+                <p class="pb-3 mb-5 border-bottom">
+                    The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
