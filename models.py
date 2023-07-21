@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Table
+from sqlalchemy import Column, ForeignKey, Table, desc
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.types import Integer, String, Boolean, Float, Date
 from sqlalchemy.orm import relationship
@@ -28,6 +28,7 @@ class Vehicle(Base):
     kilometers = Column(Float, nullable=False)
     transmission = Column(String(20), nullable=False)
     image_url = Column(String(250))
+    location = Column(String(50), nullable=False)
     available_for_rent = Column(Boolean, nullable=False)
     available_for_purchase = Column(Boolean, nullable=False)
     rental_price_per_day = Column(Float)
