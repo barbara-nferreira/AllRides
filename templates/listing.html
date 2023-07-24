@@ -10,7 +10,7 @@
 <!--hero-->
 <section class="position-relative overflow-hidden border-bottom border-primary">
     <div class="container pt-6 pb-10 position-relative z-index-1">
-        <div class="row pt-lg-9 pt-5 justify-content-between align-items-center">
+        <div class="row pt-lg-6 pt-5 justify-content-between align-items-center">
             <div class="col-lg-10 col-xl-8">
                 <h1 class="display-2 font-serif fw-bold mb-0">
                     Vehicles listed
@@ -22,30 +22,30 @@
 
 <section class="sticky-lg-top top-0">
     <div class="container">
-        <form action="{{ url_for('listing') }}" method="GET" class="position-relative z-index-1 mt-n9 mt-lg-n7 px-3 pb-3 pb-lg-0 pt-2 mb-5 bg-white border border-primary rounded-3">
+        <form action="/listing" method="POST" class="position-relative z-index-1 mt-n9 mt-lg-n7 px-3 pb-3 pb-lg-0 pt-2 mb-5 bg-white border border-primary rounded-3">
             <div class="row mx-0 g-2 align-items-center">
                 <div class="col-md-6 col-lg-3">
                     <label for="category" class="form-label small text-muted block mb-0">Vehicle Category:</label>
                     <select class="form-control form-control-lg border-0 shadow-none ps-0 pe-5" data-choices='{"searchEnabled":false,"itemSelectText":""}' name="category" id="category">
                         <option value="">All category</option>
-                        <option value="Car" {% if category == 'Car' %}selected{% endif %}>Car</option>
-                        <option value="Motorcycle" {% if category == 'Motorcycle' %}selected{% endif %}>Motorcycle</option>
-                        <option value="Truck" {% if category == 'Truck' %}selected{% endif %}>Truck</option>
+                        {% for cat in categories  %}
+                        <option value="{{cat.category_id}}">{{ cat.name }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <label for="v_for" class="form-label small text-muted block mb-0">Vehicle for:</label>
-                    <select class="form-control form-control-lg border-0 shadow-none ps-0 pe-5" data-choices='{"searchEnabled":false,"itemSelectText":""}' name="is_for_rent" id="v_for">
+                    <select class="form-control form-control-lg border-0 shadow-none ps-0 pe-5" data-choices='{"searchEnabled":false,"itemSelectText":""}' name="available_for_rent" id="v_for">
                         <option value="">All</option>
-                        <option value="True" {% if is_for_rent == 'True' %}selected{% endif %}>For Rent</option>
-                        <option value="False" {% if is_for_rent == 'False' %}selected{% endif %}>For Sale</option>
+                        <option value="True">For Rent</option>
+                        <option value="False">For Sale</option>
                     </select>
                 </div>
                 <div class="col-md-9 col-lg-4">
                     <label for="p_location" class="form-label small text-muted">Location:</label>
                     <div class="position-relative">
                         <i class="bx bx-map small ms-0 opacity-50 position-absolute start-0 top-50 translate-middle-y"></i>
-                        <input type="text" id="p_location" name="location" class="form-control  border-0 shadow-none form-control-lg ps-4" placeholder="Location..." value="{{ location }}">
+                        <input value="" type="text" id="p_location" name="location" class="form-control  border-0 shadow-none form-control-lg ps-4" placeholder="Location...">
                     </div>
                 </div>
                 <div class="col-md-3 col-lg-2 text-md-end">
@@ -57,15 +57,15 @@
 </section>
 
 <section class="position-relative">
-    <div class="container py-9 py-lg-8">
+    <div class="container py-9 py-lg-4">
         <div class="row mb-4">
             <div class="col-6">
-                <small>Showing 9 of 2400+ Vehicles</small>
+                <small>Showing All Vehicles Selected</small>
             </div>
             <div class="col-6 text-end">
                 <div class="btn-group ms-auto btn-group-sm">
                     <a class="btn btn-outline-secondary rounded-pill active"
-                        href="demo-real-estate-listing-grid.html">
+                        href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
                             fill="currentColor">
                             <path
@@ -96,11 +96,11 @@
                             <h5>{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</h5>
                         </a>
                         <div class="row mb-3 mb-lg-4">
-                            <div class="col-4 d-flex align-items-center">
+                            <div class="col-3 d-flex align-items-center">
                                 <i class="bx bx-message-square-check me-2"></i>
                                 <span class="small">{{ vehicle.year }}</span>
                             </div>
-                            <div class="col-4 d-flex align-items-center">
+                            <div class="col-5 d-flex align-items-center">
                                 <i class="bx bx-message-square-check me-2"></i>
                                 <span class="small">{{ vehicle.kilometers }} km</span>
                             </div>
@@ -108,9 +108,9 @@
                                 <i class="bx bx-message-square-check me-2"></i>
                                 <span class="small">{{ vehicle.fuel_type }}</span>
                             </div>
-                            <div class="col-4 d-flex align-items-center">
+                            <div class="col-3 d-flex align-items-center">
                                 <i class="bx bx-message-square-check me-2"></i>
-                                <span class="small">{{ vehicle.horsepower }} cv</span>
+                                <span class="small">{{ vehicle.horsepower }}cv</span>
                             </div>
                             <div class="col-4 d-flex align-items-center">
                                 <i class="bx bx-message-square-check me-2"></i>
@@ -135,13 +135,6 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-
-        <!--Lead more-->
-        <div class="d-flex justify-content-center" data-aos="fade-up">
-            <a href="#!" class="btn btn-outline-secondary rounded-pill btn-lg hover-lift">
-                Load more
-            </a>
         </div>
     </div>
 </section>
