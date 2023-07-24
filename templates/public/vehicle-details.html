@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'public/base.html' %}
 {% block title %}Vehicle Details{% endblock %}
 
 {% block content %}
@@ -89,7 +89,7 @@
         <div class="row mb-5 align-items-center">
             <div class="col-sm-4 mb-4 col-6 col-lg-3">
                 <small class="text-muted block">ID:</small>
-                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.vehicle_id }}</p>
+                <p class="lead mb-0 pb-4 border-bottom">{{ vehicle.id }}</p>
             </div>
             <div class="col-sm-4 mb-4 col-6 col-lg-3">
                 <small class="text-muted block">Type of Listing:</small>

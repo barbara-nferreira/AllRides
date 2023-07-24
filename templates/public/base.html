@@ -5,19 +5,19 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="{{ url_for("static", filename="assets/img/favicon.ico") }}" type="image/ico">
+  <link rel="icon" href="{{ url_for("static", filename="public/assets/img/favicon.ico") }}" type="image/ico">
 
   <!--Box Icons-->
-  <link rel="stylesheet" href="{{ url_for("static", filename="assets/fonts/boxicons/css/boxicons.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="public/assets/fonts/boxicons/css/boxicons.min.css") }}">
 
   <!--AOS Animations-->
-  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/node_modules/css/aos.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="public/assets/vendor/node_modules/css/aos.css") }}">
 
   <!--Vendors css-->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet'>
 
   <!--Iconsmind Icons-->
-  <link rel="stylesheet" href="{{ url_for("static", filename="assets/fonts/iconsmind/iconsmind.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="public/assets/fonts/iconsmind/iconsmind.css") }}">
 
   <!--Google fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,14 +27,14 @@
     rel="stylesheet">
 
   <!--Master slider-->
-  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/node_modules/css/swiper-bundle.min.css") }}">
-  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/masterslider/style/masterslider.css") }}">
-  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/masterslider/skins/black-1/style.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="public/assets/vendor/node_modules/css/swiper-bundle.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="public/assets/vendor/masterslider/style/masterslider.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="public/assets/vendor/masterslider/skins/black-1/style.css") }}">
 
   <!--Swiper slider-->
-  <link rel="stylesheet" href="{{ url_for("static", filename="assets/vendor/node_modules/css/swiper-bundle.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for("static", filename="public/assets/vendor/node_modules/css/swiper-bundle.min.css") }}">
   <!-- Main CSS -->
-  <link href="{{ url_for("static", filename="assets/css/theme.min.css") }}" rel="stylesheet">
+  <link href="{{ url_for("static", filename="public/assets/css/theme.min.css") }}" rel="stylesheet">
 
   <title>{% block title %}{% endblock %}</title>
 </head>
@@ -48,7 +48,7 @@
   </div>
 
   <!--begin:Header-->
-  {% include "header.html" %}
+  {% include "public/header.html" %}
   <!--end:header-->
 
 
@@ -59,7 +59,7 @@
   <!--end:main content-->
 
   <!--begin:Footer-->
-  {% include "footer.html" %}
+  {% include "public/footer.html" %}
   <!--end:Footer-->
 
 
@@ -71,12 +71,12 @@
 
 
   <!-- scripts -->
-  <script src="{{ url_for("static", filename="assets/js/theme.bundle.js") }}"></script>
+  <script src="{{ url_for("static", filename="public/assets/js/theme.bundle.js") }}"></script>
 
   <!--Mastert Slider start (Include jquery before master slider js)-->
-  <script src="{{ url_for("static", filename="assets/vendor/node_modules/js/jquery.min.js") }}"></script>
-  <script src="{{ url_for("static", filename="assets/vendor/masterslider/jquery.easing.min.js") }}"></script>
-  <script src="{{ url_for("static", filename="assets/vendor/masterslider/masterslider.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="public/assets/vendor/node_modules/js/jquery.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="public/assets/vendor/masterslider/jquery.easing.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="public/assets/vendor/masterslider/masterslider.min.js") }}"></script>
   <script>
     var slider = new MasterSlider();
     slider.setup('masterslider', {
@@ -99,7 +99,7 @@
   </script>
 
   <!--Swiper slider-->
-  <script src="{{ url_for("static", filename="assets/vendor/node_modules/js/swiper-bundle.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="public/assets/vendor/node_modules/js/swiper-bundle.min.js") }}"></script>
   <script>
     //Main Hero Slider
     var sliderThumbs = new Swiper('.progress-swiper-thumbs', {

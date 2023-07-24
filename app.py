@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # functions
 
+
 def getCategories():
     listCategories = []
     temp = session.query(Category).all()
@@ -15,21 +16,22 @@ def getCategories():
 
 # routes
 
+
 @app.route('/')
 def index():
     newlyAdded = (
         session.query(Vehicle)
         .filter_by(is_available=True)
-        .order_by(desc(Vehicle.vehicle_id))
+        .order_by(desc(Vehicle.id))
         .limit(3)
         .all()
     )
-    return render_template('index.html', newlyAdded=newlyAdded)
+    return render_template('public/index.html', newlyAdded=newlyAdded)
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('public/about.html')
 
 
 @app.get('/listing')
@@ -37,7 +39,8 @@ def listing():
     vehicles = session.query(Vehicle).filter(
         Vehicle.is_available == True).all()
 
-    return render_template('listing.html', vehicles=vehicles, categories=getCategories())
+    return render_template('public/listing.html', vehicles=vehicles, categories=getCategories())
+
 
 @app.post('/listing')
 def listingPost():
@@ -67,19 +70,22 @@ def listingPost():
         listVehicles = [
             vehicle for vehicle in listVehicles if vehicle.location.lower() == location]
 
-    return render_template('listing.html', vehicles=listVehicles, categories=getCategories())
+    return render_template('public/listing.html', vehicles=listVehicles, categories=getCategories())
 
-@app.route('/details/<int:vehicle_id>')
-def details(vehicle_id):
-    vehicle = session.query(Vehicle).filter_by(vehicle_id=vehicle_id).first()
+
+@app.route('/details/<int:id>')
+def details(id):
+    vehicle = session.query(Vehicle).filter_by(id=id).first()
     if not vehicle:
         return "Vehicle not found"
 
-    return render_template('vehicle-details.html', vehicle=vehicle)
+    return render_template('public/vehicle-details.html', vehicle=vehicle)
+
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('public/contact.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
