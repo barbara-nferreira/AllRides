@@ -4,6 +4,16 @@ from database import session
 
 app = Flask(__name__)
 
+# functions
+
+def getCategories():
+    listCategories = []
+    temp = session.query(Category).all()
+    for category in temp:
+        listCategories.append(category)
+    return listCategories
+
+# routes
 
 @app.route('/')
 def index():
@@ -22,29 +32,42 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/listing')
+@app.get('/listing')
 def listing():
-    category = request.args.get('category')
-    is_for_rent = request.args.get('is_for_rent')
-    location = request.args.get('location')
+    vehicles = session.query(Vehicle).filter(
+        Vehicle.is_available == True).all()
 
-    query = session.query(Vehicle).filter_by(is_available=True)
+    return render_template('listing.html', vehicles=vehicles, categories=getCategories())
 
-    if category:
-        query = query.filter(Vehicle.category.has(name=category))
+@app.post('/listing')
+def listingPost():
+    category_id = request.form['category']
+    available_for_rent = request.form['available_for_rent']
+    location = request.form['location'].lower()
+    listVehicles = []
 
-    if is_for_rent is not None:
-        if is_for_rent == 'True':
-            query = query.filter(Vehicle.available_for_rent == True)
-        else:
-            query = query.filter(Vehicle.available_for_rent == False)
+    vehicles = session.query(Vehicle).filter(
+        Vehicle.is_available == True).all()
 
-    if location:
-        query = query.filter(Vehicle.location.ilike(f'%{location}%'))
+    for vehicle in vehicles:
+        listVehicles.append(vehicle)
 
-    vehicles = query.all()
+    if category_id:
+        listVehicles = [
+            vehicle for vehicle in listVehicles if vehicle.category_id == int(category_id)]
 
-    return render_template('listing.html', vehicles=vehicles, category=category, is_for_rent=is_for_rent, location=location)
+    if available_for_rent == 'True':
+        listVehicles = [
+            vehicle for vehicle in listVehicles if vehicle.available_for_rent]
+    elif available_for_rent == 'False':
+        listVehicles = [
+            vehicle for vehicle in listVehicles if not vehicle.available_for_rent]
+
+    if location and location.strip():
+        listVehicles = [
+            vehicle for vehicle in listVehicles if vehicle.location.lower() == location]
+
+    return render_template('listing.html', vehicles=listVehicles, categories=getCategories())
 
 @app.route('/details/<int:vehicle_id>')
 def details(vehicle_id):
