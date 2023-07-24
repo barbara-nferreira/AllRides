@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'public/base.html' %}
 {% block title %}About{% endblock %}
 
 {% block content %}
@@ -29,7 +29,7 @@
     <div class="container py-9 py-lg-4">
       <div class="row mb-2 mb-lg-2 ">
         <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="100" data-aos-duration="400">
-          <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/hand-shake.svg") }}"
+          <img onload="SVGInject(this)" src="{{ url_for("static", filename="public/assets/img/graphics/icons/hand-shake.svg") }}"
             class="width-7x mb-5 h-auto fill-primary" alt="">
           <h5 class="mb-3">Building Relationships</h5>
           <p class="mb-0">
@@ -41,7 +41,7 @@
           </p>
         </div>
         <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="150" data-aos-duration="400">
-          <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/target.svg") }}"
+          <img onload="SVGInject(this)" src="{{ url_for("static", filename="public/assets/img/graphics/icons/target.svg") }}"
             class="width-7x mb-5 h-auto fill-success" alt="">
           <h5 class="mb-3">Mission & Vision</h5>
           <p class="mb-0">
@@ -52,7 +52,7 @@
           </p>
         </div>
         <div class="col-md-4 mb-5 mb-md-0" data-aos="fade-right" data-aos-delay="200" data-aos-duration="400">
-          <img onload="SVGInject(this)" src="{{ url_for("static", filename="assets/img/graphics/icons/magic-wand.svg") }}"
+          <img onload="SVGInject(this)" src="{{ url_for("static", filename="public/assets/img/graphics/icons/magic-wand.svg") }}"
             class="width-7x mb-5 h-auto fill-danger" alt="">
           <h5 class="mb-3">Business Growth</h5>
           <p class="mb-0">

@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'public/base.html' %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  {% include "hero.html" %}
+  {% include "public/hero.html" %}
   <!--begin:statistics section-->
   <section class="position-relative" id="section">
     <div class="container py-9 py-lg-11 position-relative">
@@ -145,7 +145,7 @@
         <div class="col-lg-4 col-md-6 col-sm-10 mb-5 mb-lg-0">
           <!--Card-vehicle-->
           <div class="position-relative">
-            <a href="/details/{{ vehicle.vehicle_id }}" class="d-block card-hover rounded overflow-hidden">
+            <a href="/details/{{ vehicle.id }}" class="d-block card-hover rounded overflow-hidden">
               <!--Image-->
               <img src="{{ url_for("static", filename=vehicle.image_url) }}" class="img-fluid img-zoom rounded" alt="" style="height: 250px; width: auto;">
               <!--overlay-->
@@ -176,7 +176,7 @@
               </div>
             </a>
             <div class="card-body pt-4">
-              <a href="/details/{{ vehicle.vehicle_id }}" class="text-dark d-block mb-4">
+              <a href="/details/{{ vehicle.id }}" class="text-dark d-block mb-4">
                 <h5>{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</h5>
               </a>
               <!--Vehicle Details-->
@@ -268,7 +268,7 @@
           <div class="position-relative">
             <a href="#!" class="d-block card-hover rounded overflow-hidden">
               <!--Image-->
-              <img src="{{ url_for("static", filename="assets/img/vehicles-category/car-types.jpg") }}" class="img-fluid img-zoom rounded" alt=""
+              <img src="{{ url_for("static", filename="public/assets/img/vehicles-category/car-types.jpg") }}" class="img-fluid img-zoom rounded" alt=""
                 style="filter: none;">
               <!--overlay-->
               <div class="position-absolute start-0 top-0 w-100 h-100">
@@ -287,7 +287,7 @@
           <div class="position-relative">
             <a href="#!" class="d-block card-hover rounded overflow-hidden">
               <!--Image-->
-              <img src="{{ url_for("static", filename="assets/img/vehicles-category/motorcycles-types.jpg") }}" class="img-fluid img-zoom rounded" alt="">
+              <img src="{{ url_for("static", filename="public/assets/img/vehicles-category/motorcycles-types.jpg") }}" class="img-fluid img-zoom rounded" alt="">
               <!--overlay-->
               <div class="position-absolute start-0 top-0 w-100 h-100">
               </div>
@@ -305,7 +305,7 @@
           <div class="position-relative">
             <a href="#!" class="d-block card-hover rounded overflow-hidden">
               <!--Image-->
-              <img src="{{ url_for("static", filename="assets/img/vehicles-category/trucks-types.jpg") }}" class="img-fluid img-zoom rounded" alt="">
+              <img src="{{ url_for("static", filename="public/assets/img/vehicles-category/trucks-types.jpg") }}" class="img-fluid img-zoom rounded" alt="">
               <!--overlay-->
               <div class="position-absolute start-0 top-0 w-100 h-100">
               </div>
@@ -331,11 +331,11 @@
             <!--Parallax-element-->
             <div class="position-absolute end-0 top-50 translate-middle-y width-7x h-auto">
               <div class="rellax" data-rellax-speed="-2" data-rellax-percentage=".9">
-                <img src="{{ url_for("static", filename="assets/img/vectors/pattern-dots.svg") }}" alt="" class="fill-warning w-100 h-auto">
+                <img src="{{ url_for("static", filename="public/assets/img/vectors/pattern-dots.svg") }}" alt="" class="fill-warning w-100 h-auto">
               </div>
             </div>
             <div class="width-19x mx-auto p-1 position-relative">
-              <img src="{{ url_for("static", filename="assets/img/mobile-app/screen-5.jpeg") }}" alt=""
+              <img src="{{ url_for("static", filename="public/assets/img/mobile-app/screen-5.jpeg") }}" alt=""
                 class="img-fluid shadow p-1 bg-secondary rounded-4">
             </div>
           </div>
@@ -411,7 +411,7 @@
                   <div class="d-flex align-items-center justify-content-start">
                     <div class="position-relative me-3">
                       <!--Avatar Image-->
-                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/4.jpg") }}"
+                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="public/assets/img/avatar/4.jpg") }}"
                         alt="">
                     </div>
                     <div>
@@ -442,7 +442,7 @@
                   </div>
                   <div class="d-flex align-items-center justify-content-start">
                     <div class="position-relative me-3">
-                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/5.jpg") }}"
+                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="public/assets/img/avatar/5.jpg") }}"
                         alt="">
                     </div>
                     <div>
@@ -473,7 +473,7 @@
                   <div class="d-flex align-items-center justify-content-start">
                     <div class="position-relative me-3">
                       <!--Avatar Image-->
-                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/6.jpg") }}"
+                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="public/assets/img/avatar/6.jpg") }}"
                         alt="">
                     </div>
                     <div>
@@ -505,7 +505,7 @@
                   <div class="d-flex align-items-center justify-content-start">
                     <div class="position-relative me-3">
                       <!--Avatar Image-->
-                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/7.jpg") }}"
+                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="public/assets/img/avatar/7.jpg") }}"
                         alt="">
                     </div>
                     <div>
@@ -538,7 +538,7 @@
                   <div class="d-flex align-items-center justify-content-start">
                     <div class="position-relative me-3">
                       <!--Avatar Image-->
-                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/8.jpg") }}"
+                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="public/assets/img/avatar/8.jpg") }}"
                         alt="">
                     </div>
                     <div>
@@ -568,7 +568,7 @@
                   </div>
                   <div class="d-flex align-items-center justify-content-start">
                     <div class="position-relative me-3">
-                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="assets/img/avatar/9.jpg") }}"
+                      <img class="position-relative avatar lg rounded-circle p-1" src="{{ url_for("static", filename="public/assets/img/avatar/9.jpg") }}"
                         alt="">
                     </div>
                     <div>

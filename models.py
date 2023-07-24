@@ -9,7 +9,7 @@ Base = declarative_base()
 
 class Category(Base):
     __tablename__ = 'category'
-    category_id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False)
 
     def __repr__(self):
@@ -17,9 +17,9 @@ class Category(Base):
 
 class Vehicle(Base):
     __tablename__ = 'vehicle'
-    vehicle_id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     category_id = Column(Integer, ForeignKey(
-        'category.category_id'), nullable=False)
+        'category.id'), nullable=False)
     make = Column(String(50), nullable=False)
     model = Column(String(50), nullable=False)
     year = Column(Integer, nullable=False)
@@ -42,7 +42,7 @@ class Vehicle(Base):
 
 class Client(Base):
     __tablename__ = 'client'
-    client_id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
     email = Column(String(250), nullable=False, unique=True)
@@ -54,9 +54,9 @@ class Client(Base):
 
 class Purchase(Base):
     __tablename__ = 'purchase'
-    purchase_id = Column(Integer, primary_key=True, autoincrement=True)
-    vehicle_id = Column(Integer, ForeignKey('vehicle.vehicle_id'), nullable=False)
-    client_id = Column(Integer, ForeignKey('client.client_id'), nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    vehicle_id = Column(Integer, ForeignKey('vehicle.id'), nullable=False)
+    client_id = Column(Integer, ForeignKey('client.id'), nullable=False)
     purchase_date = Column(Date, nullable=False)
     total_price = Column(Float, nullable=False)
 
@@ -69,9 +69,9 @@ class Purchase(Base):
 
 class Rental(Base):
     __tablename__ = 'rental'
-    rental_id = Column(Integer, primary_key=True, autoincrement=True)
-    vehicle_id = Column(Integer, ForeignKey('vehicle.vehicle_id'), nullable=False)
-    client_id = Column(Integer, ForeignKey('client.client_id'), nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    vehicle_id = Column(Integer, ForeignKey('vehicle.id'), nullable=False)
+    client_id = Column(Integer, ForeignKey('client.id'), nullable=False)
     rental_start_date = Column(Date, nullable=False)
     rental_end_date = Column(Date, nullable=False)
     total_price = Column(Float, nullable=False)
