@@ -27,6 +27,7 @@
                 </label>
         </div>
 
+        
           <!--////////////////// PreLoader Start//////////////////////-->
           <div class="loader bg-gradient-primary text-white">
             <!--Placeholder animated layout for preloader-->
@@ -82,30 +83,18 @@
                                                 {% endfor %}
                                                 {% endif %}
                                             {% endwith %}
-                                        <form action="/signin" method="POST" class=" z-index-1 position-relative needs-validation" novalidate="">
+                                        <form action="/signin" method="POST" class=" z-index-1 position-relative" novalidate="">
                                             <div class="form-floating mb-3">
                                                 <input type="email" class="form-control" required="" id="floatingInput"
                                                     placeholder="name@allrides.com" name="email">
                                                 <label for="floatingInput">Email address</label>
-                                                <span class="invalid-feedback" id="email-error">Please enter a valid email address ending with @allrides.com</span>
-                                                <span class="invalid-feedback" id="email-not-exists-error">Account doesn't exist. Please try again or sign up.</span>
+                                                <span class="invalid-feedback" id="email-invalid">Account invalid. Please try again or sign up.</span>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input type="password" required="" class="form-control"
                                                     id="floatingPassword" placeholder="Password" name="password">
                                                 <label for="floatingPassword">Password</label>
-                                                <span class="invalid-feedback" id="password-error">Enter the password</span>
-                                                <span class="invalid-feedback" id="password-invalid-error">Password invalid</span>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input me-1" id="terms" type="checkbox"
-                                                        value="">
-                                                    <label class="form-check-label" for="terms">Remember Me</label>
-                                                </div>
-                                                <div>
-                                                    <a href="page-auth-recover-pass.html" class="small text-muted">Forget Password?</a>
-                                                </div>
+                                                <span class="invalid-feedback" id="password-invalid">Password invalid</span>
                                             </div>
                                             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign In</button>
                                             <hr class="mt-4 mb-3">
@@ -152,30 +141,44 @@
                     const email = form.elements.email.value;
                     const password = form.elements.password.value;
         
+                    // Remove any previous validation classes
+                    $(".form-control").removeClass("is-invalid is-valid");
+        
                     // Reset error messages
                     $(".invalid-feedback").hide();
+                    
                     // Validate email format
                     const emailRegex = /^[a-zA-Z0-9._%+-]+@allrides\.com$/;
                     if (!emailRegex.test(email)) {
-                        $("#email-error").show();
+                        $("#email-invalid").show();
+                        $("#floatingInput").addClass("is-invalid");
                         return;
+                    } else {
+                        $("#floatingInput").addClass("is-valid");
                     }
+
+        
                     // Validate password
                     if (!password) {
-                        $("#password-error").show();
+                        $("#password-invalid").show();
+                        $("#floatingPassword").addClass("is-invalid");
                         return;
                     }
+        
                     // Submit the form using AJAX to the server-side route for authentication
                     $.post("/signin", { email: email, password: password }, function (data) {
                         if (data === "success") {
+                            $("#floatingPassword").addClass("is-valid");
                             // Authentication successful, redirect to the admin page
                             window.location.href = "/admin";
                         } else if (data === "invalid_password") {
                             // Invalid password, show the error message
-                            $("#password-invalid-error").show();
+                            $("#password-invalid").show();
+                            $("#floatingPassword").addClass("is-invalid");
                         } else {
                             // Email doesn't exist, show the error message
-                            $("#email-not-exists-error").show();
+                            $("#email-invalid").show();
+                            $("#floatingInput").addClass("is-invalid");
                         }
                     });
                 });
