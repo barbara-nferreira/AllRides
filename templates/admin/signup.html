@@ -68,11 +68,11 @@
                                         <p class="mb-4 text-center text-muted">
                                             To get started, Please sign up...
                                         </p>
-                                        <form action="/signup" method="POST" class="z-index-1 position-relative needs-validation" novalidate="">
+                                        <form action="/signup" method="POST" class="z-index-1 position-relative" novalidate="">
                                             <div class="form-floating mb-3">
                                                 <input type="email" class="form-control" required=""
-                                                    id="floatingInputEmail" placeholder="name@allrides.com" name='email'>
-                                                <label for="floatingInputEmail">Email address</label>
+                                                    id="floatingInput" placeholder="name@allrides.com" name='email'>
+                                                <label for="floatingInput">Email address</label>
                                                 <span class="invalid-feedback" id="email-error">Please enter a valid email address ending with @allrides.com</span>
                                             </div>
                                             <div class="form-floating mb-3">
@@ -86,16 +86,6 @@
                                                     id="floatingPassword2" placeholder="Password" name="confirm_password">
                                                 <label for="floatingPassword2">Confirm Password</label>
                                                 <span class="invalid-feedback" id="password-mismatch-error">Passwords do not match</span>
-                                            </div>
-                                            <div class="d-flex align-items-strech justify-content-between mb-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input me-1" required id="terms"
-                                                        type="checkbox" value="">
-                                                    <label class="form-check-label" for="terms">Agree to our <a
-                                                            href="#!.html">Terms & conditions</a></label>
-                                                    <span class="invalid-feedback">You must be agree to terms &
-                                                        conditions</span>
-                                                </div>
                                             </div>
                                             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
                                             <hr class="mt-4">
@@ -138,25 +128,35 @@
                     const email = form.elements.email.value;
                     const password = form.elements.password.value;
                     const confirmPassword = form.elements.confirm_password.value;
-
+                    
+                    // Remove any previous validation classes
+                    $(".form-control").removeClass("is-invalid is-valid");
                     // Reset error messages
                     $(".invalid-feedback").hide();
                     // Validate email format
                     const emailRegex = /^[a-zA-Z0-9._%+-]+@allrides\.com$/;
                     if (!emailRegex.test(email)) {
                         $("#email-error").show();
+                        $("#floatingInput").addClass("is-invalid");
                         return;
+                    } else {
+                        $("#floatingInput").addClass("is-valid");
                     }
                     // Validate password
                     if (!password) {
                         $("#password-error").show();
+                        $("#floatingPassword").addClass("is-invalid");
                         return;
+                    } else {
+                        $("#floatingPassword").addClass("is-valid");
                     }
                     // Validate password confirmation
                     if (password !== confirmPassword) {
                         $("#password-mismatch-error").show();
+                        $("#floatingPassword2").addClass("is-invalid");
                         return;
                     }
+                    $("#floatingPassword2").addClass("is-valid");
                     // Submit the form if validation passes
                     form.submit();
                 });
