@@ -1,8 +1,8 @@
-from sqlalchemy import Column, ForeignKey, Table, desc
+from sqlalchemy import Column, ForeignKey, Table, desc, and_
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.types import Integer, String, Boolean, Float, Date
 from sqlalchemy.orm import relationship
-from database import session, engine
+from database import db_session, engine
 
 Base = declarative_base()
 
@@ -82,5 +82,10 @@ class Rental(Base):
     def __repr__(self):
         return f"<Rental {self.rental_start_date} to {self.rental_end_date} - Car ID: {self.vehicle_id}>"
 
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    email = Column(String(250), nullable=False, unique=True)
+    password = Column(String(250), nullable=False)
 
 # Base.metadata.create_all(engine)

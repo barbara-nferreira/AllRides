@@ -1,234 +1,65 @@
 <header class="header-transparent sticky-fixed">
+  <!--begin:navbar-->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light navbar-link-white">
+    <!--Navbar-fixed-background-->
+    <div class="navbar-fixed-bg position-absolute"></div>
+    <div class="container position-relative z-index-1">
+      <!--begin:logo-->
+      <a class="navbar-brand" href="/">
+        <img src="{{ url_for("static", filename="public/assets/img/logo/logo_white_sm.svg") }}" alt="" class="img-fluid navbar-brand-sticky">
+        <img src="{{ url_for("static", filename="public/assets/img/logo/logo_white_sm.svg") }}" alt="" class="img-fluid navbar-brand-transparent"
+          style="filter: invert(100%)">
+      </a>
+      <!--end:logo-->
 
-    <!--begin:navbar-->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light navbar-link-white">
-      <!--Navbar-fixed-background-->
-      <div class="navbar-fixed-bg position-absolute"></div>
-      <div class="container position-relative z-index-1">
-        <!--begin:logo-->
-        <a class="navbar-brand" href="/">
-          <img src="{{ url_for("static", filename="public/assets/img/logo/logo_white_sm.svg") }}" alt="" class="img-fluid navbar-brand-sticky">
-          <img src="{{ url_for("static", filename="public/assets/img/logo/logo_white_sm.svg") }}" alt="" class="img-fluid navbar-brand-transparent"
-            style="filter: invert(100%)">
-        </a>
-        <!--end:logo-->
-
-        <!--begin:navbar-no-collapse-items-->
-        <div class=" d-flex align-items-center navbar-no-collapse-items">
-          <!--Navbar toggler button-->
-          <button class="navbar-toggler order-last" type="button" data-bs-toggle="collapse"
-            data-bs-target="#mainNavbarTheme" aria-controls="mainNavbarTheme" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">
-              <i></i>
-            </span>
-          </button>
+      <!--begin:navbar-no-collapse-items-->
+      <div class=" d-flex align-items-center navbar-no-collapse-items">
+        <!--Navbar toggler button-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#mainNavbarTheme" aria-controls="mainNavbarTheme" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+            <i></i>
+          </span>
+        </button>
+        <!--Button-->
+        <div class="nav-item me-3 ms-lg-3 ms-xl-2 me-lg-0 order-last">
+          <a href="/signin" class="btn btn-primary btn-sm">Login</a>
         </div>
-        <!--end:navbar-no-collapse-items-->
-
-        <!--begin:navbar-collapse-->
-        <div class="collapse navbar-collapse" id="mainNavbarTheme">
-
-          <!--begin:Navbar items-->
-          <ul class="navbar-nav ms-auto">
-
-            <!--begin:home-->
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home </a>
-            </li>
-            <!--end:home-->
-            <!--begin:about-->
-            <li class="nav-item">
-              <a class="nav-link" href="/about">About </a>
-            </li>
-            <!--end:about-->
-            <!--begin:listing-->
-            <li class="nav-item">
-              <a class="nav-link" href="/listing">Listing </a>
-            </li>
-            <!--end:listing-->
-            <!--begin:contact-->
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact </a>
-            </li>
-            <!--end:contact-->
-
-            <!--begin:portfolio
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false" data-bs-auto-close="outside">Portfolio
-              </a>
-              <div class="dropdown-menu">
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Classic</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="portfolio-classic-2-col.html">2 Col</a>
-                    <a class="dropdown-item" href="portfolio-classic-3-col.html">3 Col</a>
-                    <a class="dropdown-item" href="portfolio-classic-4-col.html">4 Col</a>
-                    <a class="dropdown-item" href="portfolio-classic-masonry.html">Masonry</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Grid
-                    Overlay</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="portfolio-grid-overlay-2-col.html">2 Col</a>
-                    <a class="dropdown-item" href="portfolio-grid-overlay-3-col.html">3 Col</a>
-                    <a class="dropdown-item" href="portfolio-grid-overlay-4-col.html">4 Col</a>
-                    <a class="dropdown-item" href="portfolio-grid-overlay-masonry.html">Masonry</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Full
-                    width</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="portfolio-full-width-3-col.html">3 Col</a>
-                    <a class="dropdown-item" href="portfolio-full-width-4-col.html">4 Col</a>
-                    <a class="dropdown-item" href="portfolio-full-width-masonry.html">Masonry</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Project
-                    Layouts</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="portfolio-case-study.html">Case Study</a>
-                    <a class="dropdown-item" href="portfolio-single-classic.html">classic</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <!--end:portfolio-->
-
-            <!--begin:pages
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false" data-bs-auto-close="outside">Pages
-              </a>
-              <div class="dropdown-menu">
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown"
-                    href="#">About</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="page-about.html">About Company</a>
-                    <a class="dropdown-item" href="page-about-modern.html">About modern</a>
-                    <a class="dropdown-item" href="page-team.html">Our Team</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" href="#" aria-expanded="false"
-                    data-bs-toggle="dropdown">Services</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="page-services.html">Services</a>
-                    <a class="dropdown-item" href="page-services-modern.html">Services
-                      Modern</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Career</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="page-careers.html">careers</a>
-                    <a class="dropdown-item" href="page-career-single.html">career single</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Customers</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="page-customers.html">Customers</a>
-                    <a class="dropdown-item" href="page-customer-story.html">Customer Story</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Account</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="page-profile.html">Profile</a>
-                    <a class="dropdown-item" href="page-account-signin.html">Sign In</a>
-                    <a class="dropdown-item" href="page-account-signin-alt.html">Sign In alt</a>
-                    <a class="dropdown-item" href="page-account-signup.html">Sign Up</a>
-                    <a class="dropdown-item" href="page-account-signup-alt.html">Sign Up Alt</a>
-                    <a class="dropdown-item" href="page-account-forget-password.html">Forget Password</a>
-                  </div>
-                </div>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Misc</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="page-misc-error-404.html">Error 404</a>
-                    <a class="dropdown-item" href="page-misc-coming-soon.html">Coming Soon</a>
-                    <a class="dropdown-item" href="page-misc-maintenance.html">Maintenance</a>
-                    <a class="dropdown-item" href="page-misc-success-message.html">Success Message</a>
-                    <a class="dropdown-item" href="page-misc-policy.html">Privacy Policy</a>
-                  </div>
-                </div>
-                <a class="dropdown-item" href="page-pricing.html">Pricing Plans</a>
-                <a class="dropdown-item" href="page-faq.html">Faqs</a>
-                <a class="dropdown-item" href="page-knowladge-base.html">Knowladge Base</a>
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Contact</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="page-contact-us-1.html">Contact Us 1</a>
-                    <a class="dropdown-item" href="page-contact-us-2.html">Contact Us 2</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <!--end:pages-->
-
-            <!--begin:demos
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Demos
-              </a>
-              <div class="dropdown-menu p-lg-3 dropdown-menu-end dropdown-menu-xs">
-                <a class="dropdown-item" target="_blank" href="demo-shop.html">
-                  E-commerce
-                </a>
-                <a class="dropdown-item" target="_blank" href="demo-one-page.html">
-                  One Page
-                </a>
-                <a class="dropdown-item" target="_blank" href="demo-real-estate.html">
-                  Real estate
-                </a>
-                <a class="dropdown-item" target="_blank" href="demo-jobs.html">
-                  Jobs
-                </a>
-                <a class="dropdown-item" target="_blank" href="demo-event-landing.html">
-                  Event Landing
-                </a>
-
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" target="_blank" href="demo-rtl.html">
-                  RTL Starter
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" target="_blank" href="https://uigator.com/assan/4.8.5/admin-dashboard/">
-                  Admin Dashboard
-                </a>
-                <a class="dropdown-item" target="_blank" href="https://uigator.com/assan/4.8.5/nft/">
-                  NFT Marketplace
-                </a>
-                <a class="dropdown-item" target="_blank"
-                  href="https://uigator.com/assan/4.8.5/blog-magazine/index.html">
-                  Blog Magazine <span class="badge bg-success">New</span>
-                </a>
-                <!--footer
-                <div class="p-3">
-                  <div class="row">
-                    <div class="col-12 d-flex align-items-center justify-content-center">
-
-                      <span class="flex-grow-1 small text-muted">Many more demos
-                        coming soon...</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <!--end:Pages-->
-          </ul>
-          <!--end:Navbar items-->
-
-        </div>
-        <!--end:navbar-collapse-->
       </div>
+      <!--end:navbar-no-collapse-items-->
 
-    </nav>
-    <!--end:navbar-->
-  </header>
+      <!--begin:navbar-collapse-->
+      <div class="collapse navbar-collapse" id="mainNavbarTheme">
+
+        <!--begin:Navbar items-->
+        <ul class="navbar-nav ms-auto">
+
+          <!--begin:home-->
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home </a>
+          </li>
+          <!--end:home-->
+          <!--begin:about-->
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About </a>
+          </li>
+          <!--end:about-->
+          <!--begin:listing-->
+          <li class="nav-item">
+            <a class="nav-link" href="/listing">Listing </a>
+          </li>
+          <!--end:listing-->
+          <!--begin:contact-->
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact </a>
+          </li>
+          <!--end:contact-->
+        </ul>
+        <!--end:Navbar items-->
+      </div>
+      <!--end:navbar-collapse-->
+    </div>
+  </nav>
+  <!--end:navbar-->
+</header>
