@@ -274,9 +274,10 @@ def addVehiclePost():
 def listingPurchase():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
-        # Get list of rentals        
+        # Get list of rentals from the database
+        purchases = db_session.query(Purchase).all()       
 
-        return render_template('admin/listing-purchase.html')
+        return render_template('admin/listing-purchase.html', purchases=purchases)
 
     else:
         flash('You need to sign in to access the admin panel.', 'error')
