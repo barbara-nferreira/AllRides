@@ -1,21 +1,50 @@
-<header class="navbar mb-3 px-3 px-lg-6 px-3 px-lg-6 align-items-center page-header navbar-expand navbar-light">
-    <a href="/admin" class="navbar-brand d-block d-lg-none">
-      <div class="d-flex align-items-center flex-no-wrap text-truncate">
-        <!--Sidebar-icon-->
-        <span class="sidebar-icon bg-gradient-primary rounded-3 size-40 fw-bolder text-white">
-          A
-        </span>
-      </div>
+<header class="navbar py-lg-0 navbar-expand-lg navbar-light navbar-horizontal fixed-top start-0 top-0 w-100 shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bolder text-reset fs-3" href="/admin">
+      <img src="{{ url_for("static", filename="admin/assets/img/logo/logo_white_sm.svg") }}" alt="" style="width: 120px; height:50px">
     </a>
-    <ul class="navbar-nav ms-auto d-flex align-items-center h-100">
-      <li class="nav-item d-flex align-items-center justify-content-center flex-column h-100 me-2">
+      <div class="d-flex order-lg-last">
+          <div class="order-lg-last ms-auto">
+              <ul class="navbar-nav navbar-icon flex-row ms-auto d-flex align-items-center">
+                <li class="nav-item d-flex align-items-center justify-content-center flex-column h-100 me-2">
 
-        <label class="dark-mode-checkbox size-40 d-flex align-items-center justify-content-center nav-link p-0" for="ChangeTheme">
-          <input type="checkbox" id="ChangeTheme"/> <span class="slide"></span>
-          </label>
-      </li>
-      <a href="/signout" class="dropdown-item d-flex align-items-center">
-      <a href="/signout" class="btn btn-primary btn-lg">Logout</a>
-      </a>
-    </ul>
+                  <label class="dark-mode-checkbox size-40 d-flex align-items-center justify-content-center nav-link p-0" for="ChangeTheme">
+                    <input type="checkbox" id="ChangeTheme"/> <span class="slide"></span>
+                    </label>
+                </li>
+                <li class="nav-item me-2 py-lg-3 d-flex align-items-center order-last">
+                  <a href="/signout" class="btn btn-primary btn-sm ">
+                    <span class="material-symbols-rounded align-middle me-1 fs-5">
+                      logout
+                      </span>Logout
+                  </a>
+                </li>
+              </ul>
+          </div>
+    
+          <button class="navbar-toggler border-0 shadow-none ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!--Navbar collapse items-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+          </ul>
+        <ul class="navbar-nav me-lg-5">
+          <li class="nav-item py-lg-3 me-lg-2">
+            <a class="nav-link" href="/admin">Analytics</a>
+          </li>
+          <li class="nav-item py-lg-3 me-lg-2">
+            <a class="nav-link" href="#">Vehicle</a>
+          </li>
+          <li class="nav-item py-lg-3 me-lg-2">
+              <a class="nav-link" href="#">Purchase</a>
+            </li>
+            <li class="nav-item py-lg-3">
+              <a class="nav-link" href="#">Orders</a>
+            </li>
+        </ul>
+      </div>
+  </div>
 </header>
