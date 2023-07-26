@@ -1,0 +1,78 @@
+{% extends 'admin/base.html' %}
+{% block title %}Listing Vehicles{% endblock %}
+
+{% block content %}
+<!--//Page Toolbar//-->
+<div class="toolbar pt-10 pb-5 px-3">
+    <div class="position-relative container">
+      <div class="row align-items-center position-relative">
+        <div class="col-md-7 mb-2 mb-md-0">
+          <h3 class="mb-0">Listing Vehicles</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--//Page Toolbar End//-->
+
+<!--//Page content//-->
+<div class="content d-flex flex-column-fluid position-relative">
+    <div class="container">
+      <!--row-->
+      <div class="row">
+        <div class="mb-3 mb-lg-5">
+          <!--card-->
+          <div class="card card-table table-nowrap overflow-hidden h-100">
+            <div class="d-flex card-header justify-content-between">
+              <h5 class="me-3 card-title mb-0">List of Vehicles</h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped mb-0" style="width:100%">
+                <thead class="text-muted">
+                  <tr>
+                    <th style="width:5%">ID</th>
+                    <th style="width:13%">Category</th>
+                    <th style="width:13%">Make</th>
+                    <th style="width:13%">Model</th>
+                    <th style="width:13%">Year</th>
+                    <th style="width:13%">Available For</th>
+                    <th style="width:13%">Price</th>
+                    <th style="width:13%">Acção</th>
+                  </tr>
+                </thead>
+                <tbody class="align-middle">
+                    {% for vehicle in vehicles %}
+                    <tr>
+                        <td>{{ vehicle.id }}</td>
+                        <td>{{ vehicle.category.name }}</td>
+                        <td>{{ vehicle.make }}</td>
+                        <td>{{ vehicle.model }}</td>
+                        <td>{{ vehicle.year }}</td>
+                        <td>
+                            {% if vehicle.available_for_purchase %}
+                            <span class="badge bg-warning rounded-pill">For Sale</span>
+                            {% else %}
+                            <span class="badge bg-info rounded-pill">For Rent</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if vehicle.available_for_purchase %}
+                            {{ vehicle.purchase_price }} €
+                            {% else %}
+                            {{ vehicle.rental_price_per_day }} €/day
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="/update-vehicle" class="btn btn-primary btn-sm">Update</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>   
+<!--//Page content End//-->
+{% endblock %}
