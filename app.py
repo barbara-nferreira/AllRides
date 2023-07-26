@@ -203,9 +203,11 @@ def indexAdmin():
 def listingVehicles():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
-        # Get list of vehicles        
+        # Get list of vehicles from the database
+        vehicles = db_session.query(Vehicle).filter(
+        Vehicle.is_available == True).all()          
 
-        return render_template('admin/listing-vehicles.html')
+        return render_template('admin/listing-vehicles.html', vehicles=vehicles)
 
     else:
         flash('You need to sign in to access the admin panel.', 'error')
@@ -274,7 +276,7 @@ def addVehiclePost():
 def listingPurchase():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
-        # Get list of rentals from the database
+        # Get list of purchases from the database
         purchases = db_session.query(Purchase).all()       
 
         return render_template('admin/listing-purchase.html', purchases=purchases)
