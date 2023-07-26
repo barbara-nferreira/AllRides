@@ -199,6 +199,48 @@ def indexAdmin():
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
 
+@app.get('/add-vehicle')
+def addVehicle():
+    return render_template('admin/add-vehicle.html', categories=getCategories())
+
+@app.post('/add-vehicle')
+def addVehiclePost():
+    category_id = request.form.get('category', type=int)
+    make = request.form['make']
+    model = request.form['model']
+    year = request.form.get('year', type=int)
+    fuel_type = request.form['fuel_type']
+    horsepower = request.form.get('horsepower', type=int)
+    kilometers = request.form.get('kilometers', type=float)
+    transmission = request.form['transmission']
+    image_url = request.form['image_url']
+    location = request.form['location'].lower()
+    available_for_rent = request.form.get('available_for', type=str) == 'Rent'
+    available_for_purchase = request.form.get('available_for', type=str) == 'Purchase'
+    rental_price_per_day = request.form.get('rental_price', type=float)
+    purchase_price = request.form.get('purchase_price', type=float)
+
+    new_vehicle = Vehicle(
+        category_id=category_id,
+        make=make,
+        model=model,
+        year=year,
+        fuel_type=fuel_type,
+        horsepower=horsepower,
+        kilometers=kilometers,
+        transmission=transmission,
+        image_url=image_url,
+        location=location,
+        available_for_rent=available_for_rent,
+        available_for_purchase=available_for_purchase,
+        rental_price_per_day=rental_price_per_day if available_for_rent else None,
+        purchase_price=purchase_price if available_for_purchase else None,
+        is_available=True
+    )
+    db_session.add(new_vehicle)
+    db_session.commit()
+
+    return redirect(url_for('indexAdmin'))
 
 if __name__ == '__main__':
     app.run(debug=True)
