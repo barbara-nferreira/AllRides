@@ -201,46 +201,103 @@ def indexAdmin():
 
 @app.get('/add-vehicle')
 def addVehicle():
-    return render_template('admin/add-vehicle.html', categories=getCategories())
+    # Check if the user is logged in by verifying session data
+    if 'user_id' in session and 'user_email' in session:
+        return render_template('admin/add-vehicle.html', categories=getCategories())
+    
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
 
 @app.post('/add-vehicle')
 def addVehiclePost():
-    category_id = request.form.get('category', type=int)
-    make = request.form['make']
-    model = request.form['model']
-    year = request.form.get('year', type=int)
-    fuel_type = request.form['fuel_type']
-    horsepower = request.form.get('horsepower', type=int)
-    kilometers = request.form.get('kilometers', type=float)
-    transmission = request.form['transmission']
-    image_url = request.form['image_url']
-    location = request.form['location'].lower()
-    available_for_rent = request.form.get('available_for', type=str) == 'Rent'
-    available_for_purchase = request.form.get('available_for', type=str) == 'Purchase'
-    rental_price_per_day = request.form.get('rental_price', type=float)
-    purchase_price = request.form.get('purchase_price', type=float)
+    if 'user_id' in session and 'user_email' in session:
+        category_id = request.form.get('category', type=int)
+        make = request.form['make']
+        model = request.form['model']
+        year = request.form.get('year', type=int)
+        fuel_type = request.form['fuel_type']
+        horsepower = request.form.get('horsepower', type=int)
+        kilometers = request.form.get('kilometers', type=float)
+        transmission = request.form['transmission']
+        image_url = request.form['image_url']
+        location = request.form['location'].lower()
+        available_for_rent = request.form.get('available_for', type=str) == 'Rent'
+        available_for_purchase = request.form.get('available_for', type=str) == 'Purchase'
+        rental_price_per_day = request.form.get('rental_price', type=float)
+        purchase_price = request.form.get('purchase_price', type=float)
 
-    new_vehicle = Vehicle(
-        category_id=category_id,
-        make=make,
-        model=model,
-        year=year,
-        fuel_type=fuel_type,
-        horsepower=horsepower,
-        kilometers=kilometers,
-        transmission=transmission,
-        image_url=image_url,
-        location=location,
-        available_for_rent=available_for_rent,
-        available_for_purchase=available_for_purchase,
-        rental_price_per_day=rental_price_per_day if available_for_rent else None,
-        purchase_price=purchase_price if available_for_purchase else None,
-        is_available=True
-    )
-    db_session.add(new_vehicle)
-    db_session.commit()
+        img_path="admin/assets/img/vehicles/"
+        image_url = img_path + image_url
 
-    return redirect(url_for('indexAdmin'))
+        new_vehicle = Vehicle(
+            category_id=category_id,
+            make=make,
+            model=model,
+            year=year,
+            fuel_type=fuel_type,
+            horsepower=horsepower,
+            kilometers=kilometers,
+            transmission=transmission,
+            image_url=image_url,
+            location=location,
+            available_for_rent=available_for_rent,
+            available_for_purchase=available_for_purchase,
+            rental_price_per_day=rental_price_per_day if available_for_rent else None,
+            purchase_price=purchase_price if available_for_purchase else None,
+            is_available=True
+        )
+        db_session.add(new_vehicle)
+        db_session.commit()
+
+        return redirect(url_for('indexAdmin'))
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
+    
+@app.get('/add-purchase')
+def addPurchase():
+    # Check if the user is logged in by verifying session data
+    if 'user_id' in session and 'user_email' in session:
+        # Fetch available vehicles and clients from the database
+        vehicles = db_session.query(Vehicle).filter_by(available_for_purchase=True, is_available=True).all()
+        clients = db_session.query(Client).all()
+        return render_template('admin/add-purchase.html', vehicles=vehicles, clients=clients)
+    
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
+
+@app.post('/add-purchase')
+def addPurchasePost():
+    if 'user_id' in session and 'user_email' in session:
+        vehicle_id = request.form.get('vehicle', type=int)
+        client_id = request.form.get('client', type=int)
+        purchase_date = request.form.get('purchase_date')
+        total_price = request.form.get('total_price', type=float)
+
+        # Fetch the selected vehicle and client from the database
+        vehicle = db_session.query(Vehicle).filter_by(id=vehicle_id, available_for_purchase=True, is_available=True).first()
+        client = db_session.query(Client).filter_by(id=client_id).first()
+
+        # Create a new Purchase instance and store it in the database
+        new_purchase = Purchase(
+            vehicle_id=vehicle.id,
+            client_id=client.id,
+            purchase_date=purchase_date,
+            total_price=total_price
+        )
+        db_session.add(new_purchase)
+        db_session.commit()
+
+
+        vehicle.is_available = False
+        db_session.commit()
+
+        return redirect(url_for('indexAdmin'))
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
 
 if __name__ == '__main__':
     app.run(debug=True)
