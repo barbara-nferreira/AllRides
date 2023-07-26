@@ -199,6 +199,17 @@ def indexAdmin():
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
 
+@app.route('/listing-vehicles')
+def listingVehicles():
+    # Check if the user is logged in by verifying session data
+    if 'user_id' in session and 'user_email' in session:
+        # Get list of vehicles        
+
+        return render_template('admin/listing-vehicles.html')
+
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
 
 @app.get('/add-vehicle')
 def addVehicle():
@@ -259,6 +270,17 @@ def addVehiclePost():
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
 
+@app.route('/listing-purchase')
+def listingPurchase():
+    # Check if the user is logged in by verifying session data
+    if 'user_id' in session and 'user_email' in session:
+        # Get list of rentals        
+
+        return render_template('admin/listing-purchase.html')
+
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
 
 @app.get('/add-purchase')
 def addPurchase():
@@ -302,6 +324,19 @@ def addPurchasePost():
         db_session.commit()
 
         return redirect(url_for('indexAdmin'))
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
+
+@app.route('/listing-rental')
+def listingRental():
+    # Check if the user is logged in by verifying session data
+    if 'user_id' in session and 'user_email' in session:
+        # Get list of rentals from the database
+        rentals = db_session.query(Rental).all()
+
+        return render_template('admin/listing-rental.html', rentals=rentals)
+
     else:
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
