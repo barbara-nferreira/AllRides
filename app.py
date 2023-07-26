@@ -2,6 +2,8 @@ from flask import Flask, request, redirect, url_for, render_template, jsonify, s
 from models import *
 from database import db_session
 import re
+from datetime import datetime
+from collections import defaultdict
 
 app = Flask(__name__)
 app.secret_key = 'secret'
@@ -156,8 +158,43 @@ def signout():
 def indexAdmin():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
-        # Show the admin panel
-        return render_template('admin/index.html')
+        # Get the top 3 rented vehicles with the highest total earnings
+        top_vehicles = db_session.query(
+            Vehicle.year,
+            Vehicle.make,
+            Vehicle.model,
+            Vehicle.image_url,
+            Category.name.label('category_name'),
+            Vehicle.rental_price_per_day,
+            func.sum(Rental.total_price).label('total_earnings')
+        ).join(Rental).join(Category).group_by(Vehicle.id).order_by(desc('total_earnings')).limit(3).all()
+
+        # Get total value of rentals received in 2023
+        total_rentals = db_session.query(func.sum(Rental.total_price)).filter(
+            Rental.rental_start_date >= '2023-01-01',
+            Rental.rental_start_date < '2024-01-01'
+        ).scalar() or 0.0
+
+        # Get total value of purchases received in 2023
+        total_purchases = db_session.query(func.sum(Purchase.total_price)).filter(
+            Purchase.purchase_date >= '2023-01-01',
+            Purchase.purchase_date < '2024-01-01'
+        ).scalar() or 0.0
+
+        # Get total number of clients
+        total_clients = db_session.query(func.count(Client.id)).scalar() or 0
+
+        # Get total number of vehicles available (inventory count)
+        total_vehicles_available = db_session.query(func.count(Vehicle.id)).filter(
+            Vehicle.is_available == True
+        ).scalar() or 0
+
+        return render_template('admin/index.html', top_vehicles=top_vehicles,
+                               total_rentals=total_rentals,
+                               total_purchases=total_purchases,
+                               total_clients=total_clients,
+                               total_vehicles_available=total_vehicles_available)
+
     else:
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))

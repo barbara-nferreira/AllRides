@@ -1,24 +1,153 @@
 {% extends 'admin/base.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Analytics{% endblock %}
 
 {% block content %}
 <!--//Page Toolbar//-->
-<div class="toolbar pb-4 px-3 px-lg-6 pt-4 bg-body">
+<div class="toolbar px-3 px-lg-6 pt-3 pb-3">
     <div class="position-relative container-fluid px-0">
-        <div class="row align-items-center position-relative">
-            <div class="col-md-8 mb-4 mb-lg-0">
-                <h3 class="mb-2">Blank page</h3>
-            </div>
+      <div class="row align-items-center position-relative">
+        <div class="col-md-7 mb-3 mb-md-0">
+          <h3 class="mb-0">Analytics</h3>
         </div>
+      </div>
     </div>
-</div>
-<!--//Page Toolbar End//-->
+  </div>
+  <!--//Page Toolbar End//-->
 
 <!--//Page content//-->
-<div class="content pt-3 px-3 px-lg-6 d-flex flex-column-fluid">
+<div class="content px-3 px-lg-6 pt-3 pb-0 d-flex flex-column-fluid position-relative">
     <div class="container-fluid px-0">
-      <h5>Content here...</h5>
+      <!--row-->
+      <div class="row">
+        <div class="mb-3 mb-lg-5">
+          <!--card-->
+          <div class="card card-table table-nowrap overflow-hidden h-100">
+            <div class="d-flex card-header justify-content-between">
+              <h5 class="me-3 card-title mb-0">Top 3 Rented Vehicles</h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped mb-0" style="width:100%">
+                <thead class="text-muted">
+                  <tr>
+                    <th class="ps-3" style="width:40%">Vehicle</th>
+                    <th style="width:15%">Category</th>
+                    <th style="width:15%">Price per day</th>
+                    <th style="width:15%">Nr. days</th>
+                    <th style="width:15%">Total</th>
+                  </tr>
+                </thead>
+                <tbody class="align-middle">
+                    {% for vehicle in top_vehicles %}
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <a href="#!.html"><img src="{{ url_for('static', filename=vehicle.image_url) }}"
+                                        class=" bg-body p-1 rounded-2 me-3 align-middle" alt="" style="max-height: 80px; max-width: 140px"></a>
+                                <p class="mb-0 text-truncate fs-6"><a href="#!.html"
+                                        class="text-reset">{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</a></p>
+                            </div>
+                        </td>
+                        <td>{{ vehicle.category_name }}</td>
+                        <td>{{ vehicle.rental_price_per_day }}€</td>
+                        <td>{{ vehicle.total_earnings / vehicle.rental_price_per_day }}</td>
+                        <td>{{ vehicle.total_earnings }}€</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--row-->
+      <div class="row">
+        <div class="col-sm-6 col-xl-3 mb-3 mb-lg-5">
+          <!--::begin card-->
+          <div class="card card-body">
+            <!--Title-->
+            <h6 class="mb-3">Total Rentals
+              <span class="material-symbols-rounded ms-2 fs-6 align-middle opacity-75"
+                data-tippy-content="Total value of rentals received this year" data-tippy-placement="top">info</span>
+            </h6>
+            <div class="d-flex lh-1 align-items-center">
+              <h4 class="mb-0">{{ total_rentals }}€</h4>
+
+              <!--vertical line-->
+              <div class="vr lh-1 align-self-center opacity-25 mx-3 height-10" style="min-height: auto;"></div>
+              <!--::/vertical line-->
+
+              <span class="material-symbols-rounded align-middle text-success">arrow_drop_up</span>
+              <small>11%</small>
+            </div>
+          </div>
+          <!--::/end card-->
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-3 mb-lg-5">
+          <!--::begin card-->
+          <div class="card card-body">
+            <!--Title-->
+            <h6 class="mb-3">Total Purchases
+              <span class="material-symbols-rounded ms-2 fs-6 align-middle opacity-75"
+                data-tippy-content="Total value of purchases this year" data-tippy-placement="top">info</span>
+            </h6>
+            <div class="d-flex lh-1 align-items-center">
+              <h4 class="mb-0">{{ total_purchases }}€</h4>
+
+              <!--vertical line-->
+              <div class="vr lh-1 align-self-center opacity-25 mx-3 height-10" style="min-height: auto;"></div>
+              <!--::/vertical line-->
+
+              <span class="material-symbols-rounded align-middle text-success">arrow_drop_up</span>
+              <small>36%</small>
+            </div>
+          </div>
+          <!--::/end card-->
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-3 mb-lg-5">
+          <!--::begin card-->
+          <div class="card card-body">
+            <!--Title-->
+            <h6 class="mb-3">Total Clients
+              <span class="material-symbols-rounded ms-2 fs-6 align-middle opacity-75"
+                data-tippy-content="Total number of clients" data-tippy-placement="top">info</span>
+            </h6>
+            <div class="d-flex lh-1 align-items-center">
+              <h4 class="mb-0">{{ total_clients }}</h4>
+
+              <!--vertical line-->
+              <div class="vr lh-1 align-self-center opacity-25 mx-3 height-10" style="min-height: auto;"></div>
+              <!--::/vertical line-->
+
+              <span class="material-symbols-rounded align-middle text-success">arrow_drop_up</span>
+              <small>12%</small>
+            </div>
+          </div>
+          <!--::/end card-->
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-3 mb-lg-5">
+          <!--::begin card-->
+          <div class="card card-body">
+            <!--Title-->
+            <h6 class="mb-3">Total Vehicles
+              <span class="material-symbols-rounded ms-2 fs-6 align-middle opacity-75"
+                data-tippy-content="Total number of vehicles"
+                data-tippy-placement="top">info</span>
+            </h6>
+            <div class="d-flex lh-1 align-items-center">
+              <h4 class="mb-0">{{ total_vehicles_available }}</h4>
+
+              <!--vertical line-->
+              <div class="vr lh-1 align-self-center opacity-25 mx-3 height-10" style="min-height: auto;"></div>
+              <!--::/vertical line-->
+
+              <span class="material-symbols-rounded align-middle text-success">arrow_drop_up</span>
+              <small>24%</small>
+            </div>
+          </div>
+          <!--::/end card-->
+        </div>
+      </div>
     </div>
-</div>
-<!--//Page content End//-->
+</div>   
+  <!--//Page content End//-->
 {% endblock %}
