@@ -1,5 +1,5 @@
 {% extends 'admin/base.html' %}
-{% block title %}Add Purchase{% endblock %}
+{% block title %}Add Rental{% endblock %}
 
 {% block content %}
 <!--//Page Toolbar//-->
@@ -7,7 +7,7 @@
     <div class="position-relative container">
       <div class="row align-items-center position-relative">
         <div class="col-md-7 mb-2 mb-md-0">
-          <h3 class="mb-0">Add New Purchase</h3>
+          <h3 class="mb-0">Add New Rental</h3>
         </div>
       </div>
     </div>
@@ -15,11 +15,20 @@
   <!--//Page Toolbar End//-->
 
 <!--//Page content//-->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning text-center">
+                    {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <div class="content d-flex flex-column-fluid position-relative">
     <div class="container">
         <div class="card mb-3 mb-lg-5">
             <div class="card-body">
-                <form class="row g-3 needs-validation" method="POST" action="/add-purchase" novalidate>
+                <form class="row g-3 needs-validation" method="POST" action="/add-rental" novalidate>
                     <div class="col-md-6 py-lg-3">
                       <label for="validationCustom01" class="form-label">Vehicle</label>
                       <select class="form-select" name="vehicle" id="vehicle" required>
@@ -44,22 +53,29 @@
                         This field is required
                       </div>
                     </div>
-                    <div class="col-md-6 py-lg-3">
-                      <label for="validationCustom02" class="form-label">Purchase Date</label>
-                      <input type="date" class="form-control" name="purchase_date" id="validationCustom02" value="" required>
+                    <div class="col-md-3 py-lg-3">
+                      <label for="validationCustom02" class="form-label">Rental Start Date</label>
+                      <input type="date" class="form-control" name="rental_start_date" id="validationCustom02" value="" required>
+                      <div class="invalid-feedback">
+                        This field is required
+                      </div>
+                    </div>
+                    <div class="col-md-3 py-lg-3">
+                      <label for="validationCustom02" class="form-label">Rental End Date</label>
+                      <input type="date" class="form-control" name="rental_end_date" id="validationCustom02" value="" required>
                       <div class="invalid-feedback">
                         This field is required
                       </div>
                     </div>
                     <div class="col-md-6 py-lg-3">
-                        <label for="validationCustom02" class="form-label">Total Price</label>
-                        <input type="text" class="form-control" name="total_price" id="validationCustom02" value="" required>
+                        <label for="validationCustom02" class="form-label">Price per day</label>
+                        <input type="text" class="form-control" name="price_per_day" id="validationCustom02" value="" required>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
                     </div>
                     <div class="col-12 py-lg-3">
-                      <button class="btn btn-primary" type="submit">Add Purchase</button>
+                      <button class="btn btn-primary" type="submit">Add Rental</button>
                     </div>
               </form>
             </div>
