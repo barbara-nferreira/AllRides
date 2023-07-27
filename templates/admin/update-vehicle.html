@@ -1,5 +1,5 @@
 {% extends 'admin/base.html' %}
-{% block title %}Add Vehicle{% endblock %}
+{% block title %}Update Vehicle{% endblock %}
 
 {% block content %}
 <!--//Page Toolbar//-->
@@ -7,7 +7,7 @@
     <div class="position-relative container">
       <div class="row align-items-center position-relative">
         <div class="col-md-7 mb-2 mb-md-0">
-          <h3 class="mb-0">Add New Vehicle</h3>
+          <h3 class="mb-0">Update Vehicle</h3>
         </div>
       </div>
     </div>
@@ -19,13 +19,13 @@
     <div class="container">
         <div class="card mb-3 mb-lg-5">
             <div class="card-body">
-                <form class="row g-3 needs-validation" method="POST" action="/add-vehicle" novalidate>
+                <form class="row g-3 needs-validation" method="POST" action="/update-vehicle/{{ vehicle.id }}" novalidate>
                     <div class="col-md-3 py-lg-3">
                       <label for="validationCustom01" class="form-label">Category</label>
                       <select class="form-select" name="category" id="category" required>
                         <option selected disabled value="">Select...</option>
                         {% for cat in categories  %}
-                        <option value="{{cat.id}}">{{ cat.name }}</option>
+                        <option value="{{cat.id}}" {% if cat.id == vehicle.category_id %}selected{% endif %}>{{ cat.name }}</option>
                         {% endfor %}
                       </select>
                       <div class="invalid-feedback">
@@ -34,49 +34,49 @@
                     </div>
                     <div class="col-md-3 py-lg-3">
                       <label for="validationCustom01" class="form-label">Year</label>
-                      <input type="text" class="form-control" name="year" id="validationCustom01" value="" required>
+                      <input type="text" class="form-control" name="year" id="validationCustom01" value="{{ vehicle.year }}" required>
                       <div class="invalid-feedback">
                         This field is required
                       </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                       <label for="validationCustom02" class="form-label">Make</label>
-                      <input type="text" class="form-control" name="make" id="validationCustom02" value="" required>
+                      <input type="text" class="form-control" name="make" id="validationCustom02" value="{{ vehicle.make }}" required>
                       <div class="invalid-feedback">
                         This field is required
                       </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Model</label>
-                        <input type="text" class="form-control" name="model" id="validationCustom02" value="" required>
+                        <input type="text" class="form-control" name="model" id="validationCustom02" value="{{ vehicle.model }}" required>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Fuel Type</label>
-                        <input type="text" class="form-control" name="fuel_type" id="validationCustom02" value="" required>
+                        <input type="text" class="form-control" name="fuel_type" id="validationCustom02" value="{{ vehicle.fuel_type }}" required>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Horsepower</label>
-                        <input type="text" class="form-control" name="horsepower" id="validationCustom02" value="" required>
+                        <input type="text" class="form-control" name="horsepower" id="validationCustom02" value="{{ vehicle.horsepower }}" required>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Kilometers</label>
-                        <input type="text" class="form-control" name="kilometers" id="validationCustom02" value="" required>
+                        <input type="text" class="form-control" name="kilometers" id="validationCustom02" value="{{ vehicle.kilometers }}" required>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Transmission</label>
-                        <input type="text" class="form-control" name="transmission" id="validationCustom02" value="" required>
+                        <input type="text" class="form-control" name="transmission" id="validationCustom02" value="{{ vehicle.transmission }}" required>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
@@ -85,48 +85,54 @@
                         <label for="validationCustom02" class="form-label">Available for:</label>
                         <select class="form-select" name="available_for" id="validationCustom04" required>
                             <option selected disabled value="">Select...</option>
-                            <option value="Rent">Rent</option>
-                            <option value="Purchase">Purchase</option>
-                          </select>
+                            <option value="Rent" {% if vehicle.available_for_rent %}selected{% endif %}>Rent</option>
+                            <option value="Purchase" {% if vehicle.available_for_purchase %}selected{% endif %}>Purchase</option>
+                        </select>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Rental price</label>
-                        <input type="text" class="form-control" name="rental_price" id="validationCustom02" value="">
+                        <input type="text" class="form-control" name="rental_price" id="validationCustom02" value="{{ vehicle.rental_price_per_day }}">
                         <div class="invalid-feedback">
                           This field is required if selected Rent
                         </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Purchase Price</label>
-                        <input type="text" class="form-control" name="purchase_price" id="validationCustom02" value="">
+                        <input type="text" class="form-control" name="purchase_price" id="validationCustom02" value="{{ vehicle.purchase_price }}">
                         <div class="invalid-feedback">
                           This field is required if selected purchase
                         </div>
                     </div>
                     <div class="col-md-3 py-lg-3">
                         <label for="validationCustom02" class="form-label">Location</label>
-                        <input type="text" class="form-control" name="location" id="validationCustom02" value="" required>
+                        <input type="text" class="form-control" name="location" id="validationCustom02" value="{{ vehicle.location }}" required>
                         <div class="invalid-feedback">
                           This field is required
                         </div>
                     </div>
                     <div class="col-md-12 py-lg-3">
-                      <label for="validationCustom03" class="form-label">Image url</label>
-                      <input type="file" class="form-control" name="image_file" id="formFile" required>
-                      <div class="invalid-feedback">
-                        This field is required
-                      </div>
+                        <label for="validationCustom03" class="form-label">Current Image</label>
+                        {% if vehicle.image_url %}
+                        <img src="{{ url_for('static', filename=vehicle.image_url) }}" alt="Current Image" 
+                            class="img-thumbnail" style="max-height: 120px">
+                        {% else %}
+                        <p>No image available</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-12 py-lg-3">
+                        <label for="validationCustom03" class="form-label">New Image (optional)</label>
+                        <input type="file" class="form-control" name="image_file" id="formFile">
+                        <div class="valid-feedback"></div>
                     </div>
                     <div class="col-12 py-lg-3">
-                      <button class="btn btn-primary" type="submit">Add Vehicle</button>
+                      <button class="btn btn-primary" type="submit">Update Vehicle</button>
                     </div>
               </form>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

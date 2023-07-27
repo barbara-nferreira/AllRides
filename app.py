@@ -1,16 +1,13 @@
 from flask import Flask, request, redirect, url_for, render_template, jsonify, session, flash
 from models import *
 from database import db_session
-import re
 from datetime import datetime
-from collections import defaultdict
 
 app = Flask(__name__)
 app.secret_key = 'secret'
 # app.config['SECRET_KEY'] = 'secret'
 
 # functions
-
 
 def getCategories():
     listCategories = []
@@ -21,23 +18,20 @@ def getCategories():
 
 # public routes
 
-
 @app.route('/')
 def index():
     newlyAdded = (
         db_session.query(Vehicle)
-        .filter_by(is_available=True)
+        .filter(Vehicle.is_available==True)
         .order_by(desc(Vehicle.id))
         .limit(3)
         .all()
     )
     return render_template('public/index.html', newlyAdded=newlyAdded)
 
-
 @app.route('/about')
 def about():
     return render_template('public/about.html')
-
 
 @app.get('/listing')
 def listing():
@@ -45,7 +39,6 @@ def listing():
         Vehicle.is_available == True).all()
 
     return render_template('public/listing.html', vehicles=vehicles, categories=getCategories())
-
 
 @app.post('/listing')
 def listingPost():
@@ -77,15 +70,13 @@ def listingPost():
 
     return render_template('public/listing.html', vehicles=listVehicles, categories=getCategories())
 
-
 @app.route('/details/<int:id>')
 def details(id):
-    vehicle = db_session.query(Vehicle).filter_by(id=id).first()
+    vehicle = db_session.query(Vehicle).filter(Vehicle.id == id).first()
     if not vehicle:
         return "Vehicle not found"
 
     return render_template('public/vehicle-details.html', vehicle=vehicle)
-
 
 @app.route('/contact')
 def contact():
@@ -93,11 +84,9 @@ def contact():
 
 # admin routes
 
-
 @app.get('/signup')
 def signup():
     return render_template('admin/signup.html')
-
 
 @app.post('/signup')
 def signupPost():
@@ -119,11 +108,9 @@ def signupPost():
     flash('Account created successfully. Please sign in.', 'success')
     return redirect(url_for('signin'))
 
-
 @app.get('/signin')
 def signin():
     return render_template('admin/signin.html')
-
 
 @app.post('/signin')
 def signinPost():
@@ -145,14 +132,12 @@ def signinPost():
     else:
         return "invalid_password"
 
-
 @app.route('/signout')
 def signout():
     # Clear user data from the session to sign out
     session.pop('user_id', None)
     session.pop('user_email', None)
     return redirect(url_for('signin'))
-
 
 @app.route('/admin')
 def indexAdmin():
@@ -204,9 +189,7 @@ def listingVehicles():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
         # Get list of vehicles from the database
-        vehicles = db_session.query(Vehicle).filter(
-        Vehicle.is_available == True).all()          
-
+        vehicles = db_session.query(Vehicle).all()          
         return render_template('admin/listing-vehicles.html', vehicles=vehicles)
 
     else:
@@ -223,7 +206,6 @@ def addVehicle():
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
 
-
 @app.post('/add-vehicle')
 def addVehiclePost():
     if 'user_id' in session and 'user_email' in session:
@@ -235,17 +217,15 @@ def addVehiclePost():
         horsepower = request.form.get('horsepower', type=int)
         kilometers = request.form.get('kilometers', type=float)
         transmission = request.form['transmission']
-        image_url = request.form['image_url']
+        image_file = request.form['image_file']
         location = request.form['location'].lower()
-        available_for_rent = request.form.get(
-            'available_for', type=str) == 'Rent'
-        available_for_purchase = request.form.get(
-            'available_for', type=str) == 'Purchase'
+        available_for_rent = request.form.get('available_for', type=str) == 'Rent'
+        available_for_purchase = request.form.get('available_for', type=str) == 'Purchase'
         rental_price_per_day = request.form.get('rental_price', type=float)
         purchase_price = request.form.get('purchase_price', type=float)
 
         img_path = "admin/assets/img/vehicles/"
-        image_url = img_path + image_url
+        image_url = img_path + image_file
 
         new_vehicle = Vehicle(
             category_id=category_id,
@@ -272,6 +252,72 @@ def addVehiclePost():
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
 
+@app.get('/update-vehicle/<int:id>')
+def updateVehicle(id):
+    # Check if the user is logged in by verifying session data
+    if 'user_id' in session and 'user_email' in session:
+        vehicle = db_session.query(Vehicle).filter(Vehicle.id == id).first()
+        if not vehicle:
+            return "Vehicle not found"
+        return render_template('admin/update-vehicle.html', vehicle=vehicle, categories=getCategories())
+
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
+
+@app.post('/update-vehicle/<int:id>')
+def updateVehiclePost(id):
+    if 'user_id' in session and 'user_email' in session:
+        vehicle = db_session.query(Vehicle).filter(Vehicle.id == id).first()
+        if not vehicle:
+            return "Vehicle not found"
+        
+        # Get form data from the request
+        category_id = request.form.get('category', type=int)
+        make = request.form['make']
+        model = request.form['model']
+        year = request.form.get('year', type=int)
+        fuel_type = request.form['fuel_type']
+        horsepower = request.form.get('horsepower', type=int)
+        kilometers = request.form.get('kilometers', type=float)
+        transmission = request.form['transmission']
+        available_for_rent = request.form.get('available_for', type=str) == 'Rent'
+        available_for_purchase = request.form.get('available_for', type=str) == 'Purchase'
+        rental_price_per_day = request.form.get('rental_price', type=float)
+        purchase_price = request.form.get('purchase_price', type=float)
+        location = request.form['location'].lower()
+        
+        # Handle file upload
+        image_file = request.form['image_file']
+        if image_file:
+        # Save the file to the desired location
+            img_path = "admin/assets/img/vehicles/"
+            image_url = img_path + image_file
+            vehicle.image_url = image_url
+
+        # Update the vehicle with the new data
+        vehicle.category_id = category_id
+        vehicle.make = make
+        vehicle.model = model
+        vehicle.year = year
+        vehicle.fuel_type = fuel_type
+        vehicle.horsepower = horsepower
+        vehicle.kilometers = kilometers
+        vehicle.transmission = transmission
+        vehicle.available_for_rent = available_for_rent
+        vehicle.available_for_purchase = available_for_purchase
+        vehicle.rental_price_per_day = rental_price_per_day if available_for_rent else None
+        vehicle.purchase_price = purchase_price if available_for_purchase else None
+        vehicle.location = location
+
+        # Commit the changes to the database
+        db_session.commit()
+
+        return redirect(url_for('indexAdmin'))
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
+
 @app.route('/listing-purchase')
 def listingPurchase():
     # Check if the user is logged in by verifying session data
@@ -290,15 +336,14 @@ def addPurchase():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
         # Fetch available vehicles and clients from the database
-        vehicles = db_session.query(Vehicle).filter_by(
-            available_for_purchase=True, is_available=True).all()
+        vehicles = db_session.query(Vehicle).filter(
+            Vehicle.available_for_purchase==True, Vehicle.is_available==True).all()
         clients = db_session.query(Client).all()
         return render_template('admin/add-purchase.html', vehicles=vehicles, clients=clients)
 
     else:
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
-
 
 @app.post('/add-purchase')
 def addPurchasePost():
@@ -309,9 +354,9 @@ def addPurchasePost():
         total_price = request.form.get('total_price', type=float)
 
         # Fetch the selected vehicle and client from the database
-        vehicle = db_session.query(Vehicle).filter_by(
-            id=vehicle_id, available_for_purchase=True, is_available=True).first()
-        client = db_session.query(Client).filter_by(id=client_id).first()
+        vehicle = db_session.query(Vehicle).filter(
+            Vehicle.id==vehicle_id, Vehicle.available_for_purchase==True, Vehicle.is_available==True).first()
+        client = db_session.query(Client).filter(Vehicle.id==client_id).first()
 
         # Create a new Purchase instance and store it in the database
         new_purchase = Purchase(
@@ -349,15 +394,14 @@ def addRental():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
         # Fetch available vehicles and clients from the database
-        vehicles = db_session.query(Vehicle).filter_by(
-            available_for_rent=True, is_available=True).all()
+        vehicles = db_session.query(Vehicle).filter(
+            Vehicle.available_for_rent==True, Vehicle.is_available==True).all()
         clients = db_session.query(Client).all()
         return render_template('admin/add-rental.html', vehicles=vehicles, clients=clients)
 
     else:
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
-
 
 @app.post('/add-rental')
 def addRentalPost():
@@ -369,9 +413,9 @@ def addRentalPost():
         price_per_day = request.form.get('price_per_day', type=float)
 
         # Fetch the selected vehicle and client from the database
-        vehicle = db_session.query(Vehicle).filter_by(
-            id=vehicle_id, available_for_rent=True, is_available=True).first()
-        client = db_session.query(Client).filter_by(id=client_id).first()
+        vehicle = db_session.query(Vehicle).filter(
+            Vehicle.id==vehicle_id, Vehicle.available_for_rent==True, Vehicle.is_available==True).first()
+        client = db_session.query(Client).filter(Vehicle.id==client_id).first()
 
         # Ensure rental start date is before or equal to end date
         rental_start_datetime = datetime.strptime(rental_start_date, "%Y-%m-%d")
