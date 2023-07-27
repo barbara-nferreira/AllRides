@@ -27,16 +27,16 @@
             </div>
             <div class="table-responsive">
               <table class="table table-striped mb-0" style="width:100%">
-                <thead class="text-muted">
+                <thead class="align-middle text-muted">
                   <tr>
                     <th style="width:5%">ID</th>
-                    <th style="width:13%">Category</th>
-                    <th style="width:13%">Make</th>
-                    <th style="width:13%">Model</th>
-                    <th style="width:13%">Year</th>
-                    <th style="width:13%">Available For</th>
-                    <th style="width:13%">Price</th>
-                    <th style="width:13%">Acção</th>
+                    <th style="width:15%">Category</th>
+                    <th style="width:15%">Make</th>
+                    <th style="width:15%">Model</th>
+                    <th style="width:10%">Year</th>
+                    <th style="width:13%">Availability</th>
+                    <th style="width:10%">Price</th>
+                    <th style="width:15%">Acção</th>
                   </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -48,11 +48,13 @@
                         <td>{{ vehicle.model }}</td>
                         <td>{{ vehicle.year }}</td>
                         <td>
-                            {% if vehicle.available_for_purchase %}
+                          {% if vehicle.id in sold_vehicle_ids %}
+                            <span class="badge bg-success rounded-pill">Sold</span>
+                          {% elif vehicle.available_for_purchase %}
                             <span class="badge bg-warning rounded-pill">For Sale</span>
-                            {% else %}
+                          {% else %}
                             <span class="badge bg-info rounded-pill">For Rent</span>
-                            {% endif %}
+                          {% endif %}
                         </td>
                         <td>
                             {% if vehicle.available_for_purchase %}
@@ -62,7 +64,12 @@
                             {% endif %}
                         </td>
                         <td>
-                            <a href="/update-vehicle/{{ vehicle.id }}" class="btn btn-primary btn-sm">Update</a>
+                          {% if vehicle.id not in sold_vehicle_ids and vehicle.id not in rented_vehicle_ids %}
+                            <a href="/update-vehicle/{{ vehicle.id }}" class="me-3 btn btn-primary btn-sm">Update</a>
+                            <a href="/delete-vehicle/{{ vehicle.id }}" class="btn btn-danger btn-sm">Delete</a>
+                          {% elif vehicle.id in rented_vehicle_ids %}
+                            <a href="/update-vehicle/{{ vehicle.id }}" class="me-3 btn btn-primary btn-sm">Update</a>
+                          {% endif %}
                         </td>
                     </tr>
                     {% endfor %}

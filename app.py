@@ -188,10 +188,23 @@ def indexAdmin():
 def listingVehicles():
     # Check if the user is logged in by verifying session data
     if 'user_id' in session and 'user_email' in session:
-        # Get list of vehicles from the database
-        vehicles = db_session.query(Vehicle).all()          
-        return render_template('admin/listing-vehicles.html', vehicles=vehicles)
+        # Get the list of all vehicles
+        vehicles = db_session.query(Vehicle).all()
 
+        # Get the list of sold vehicle IDs (IDs present in the purchase table)
+        sold_vehicle_ids = set()
+        purchases = db_session.query(Purchase).all()
+        for purchase in purchases:
+            sold_vehicle_ids.add(purchase.vehicle_id)
+
+        # Get the list of rented vehicle IDs (IDs present in the rental table)
+        rented_vehicle_ids = set()
+        rentals = db_session.query(Rental).all()
+        for rental in rentals:
+            rented_vehicle_ids.add(rental.vehicle_id)
+
+        return render_template('admin/listing-vehicles.html', vehicles=vehicles, sold_vehicle_ids=sold_vehicle_ids, rented_vehicle_ids=rented_vehicle_ids)
+   
     else:
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
@@ -313,7 +326,42 @@ def updateVehiclePost(id):
         # Commit the changes to the database
         db_session.commit()
 
-        return redirect(url_for('indexAdmin'))
+        return redirect(url_for('listingVehicles'))
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
+
+@app.get('/delete-vehicle/<int:id>')
+def deleteVehicle(id):
+    # Check if the user is logged in by verifying session data
+    if 'user_id' in session and 'user_email' in session:
+        vehicle = db_session.query(Vehicle).filter(Vehicle.id == id).first()
+        if not vehicle:
+            return "Vehicle not found"
+        return render_template('admin/delete-vehicle.html', vehicle=vehicle, categories=getCategories())
+
+    else:
+        flash('You need to sign in to access the admin panel.', 'error')
+        return redirect(url_for('signin'))
+
+@app.post('/delete-vehicle/<int:id>')
+def deleteVehiclePost(id):
+    if 'user_id' in session and 'user_email' in session:
+        vehicle = db_session.query(Vehicle).filter(Vehicle.id == id).first()
+        if not vehicle:
+            return "Vehicle not found"
+
+        try:
+            # Delete the vehicle from the database
+            db_session.delete(vehicle)
+            db_session.commit()
+            
+        except Exception as e:
+            # Handle any exceptions that might occur during deletion
+            db_session.rollback()
+            return redirect(url_for('listingVehicles'))
+
+        return redirect(url_for('listingVehicles'))
     else:
         flash('You need to sign in to access the admin panel.', 'error')
         return redirect(url_for('signin'))
