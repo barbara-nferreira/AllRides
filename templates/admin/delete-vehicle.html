@@ -1,5 +1,5 @@
 {% extends 'admin/base.html' %}
-{% block title %}Update Vehicle{% endblock %}
+{% block title %}Delete Vehicle{% endblock %}
 
 {% block content %}
 <!--//Page Toolbar//-->
@@ -7,7 +7,7 @@
     <div class="position-relative container">
       <div class="row align-items-center position-relative">
         <div class="col-md-7 mb-2 mb-md-0">
-          <h3 class="mb-0">Update Vehicle</h3>
+          <h3 class="mb-0">Delete Vehicle</h3>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="container">
         <div class="card mb-3 mb-lg-5">
             <div class="card-body">
-                <form class="row g-3 needs-validation" method="POST" action="/update-vehicle/{{ vehicle.id }}" novalidate>
+                <form class="row g-3 needs-validation" method="POST" action="/delete-vehicle/{{ vehicle.id }}" id="delete-form" novalidate>
                     <div class="col-md-3 py-lg-3">
                       <label for="validationCustom01" class="form-label">Category</label>
                       <select class="form-select" name="category" id="category" required>
@@ -123,21 +123,16 @@
                         </div>
                     </div>
                     <div class="col-md-12 py-lg-3">
-                        <label for="validationCustom03" class="form-label">Current Image</label>
+                        <label for="validationCustom03" class="form-label">Image</label>
                         {% if vehicle.image_url %}
                         <img src="{{ url_for('static', filename=vehicle.image_url) }}" alt="Current Image" 
-                            class="img-thumbnail" style="max-height: 120px">
+                            class="img-thumbnail" style="max-height: 150px">
                         {% else %}
                         <p>No image available</p>
                         {% endif %}
                     </div>
-                    <div class="col-md-12 py-lg-3">
-                        <label for="validationCustom03" class="form-label">New Image (optional)</label>
-                        <input type="file" class="form-control" name="image_file" id="formFile">
-                        <div class="valid-feedback"></div>
-                    </div>
                     <div class="col-12 py-lg-3">
-                      <button class="btn btn-success" type="submit">Update Vehicle</button>
+                      <button class="btn btn-danger" type="submit" onclick="confirmDelete()">Delete Vehicle</button>
                       <a class="btn btn-primary" href="/listing-vehicles">Back to Listing</a>
                     </div>
               </form>

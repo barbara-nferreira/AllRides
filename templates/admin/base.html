@@ -73,9 +73,20 @@
         
         <!--////////////Theme Core scripts Start/////////////////-->
         <script src="{{ url_for("static", filename="admin/assets/js/theme.bundle.js") }}"></script>
-
         <!--////////////Theme Core scripts End/////////////////-->
 
+        <!--////////////Delete vehicle confirmation scripts Start/////////////////-->
+        <script>
+          function confirmDelete() {
+              if (confirm("Are you sure you want to delete this vehicle?")) {
+                  document.getElementById('delete-form').submit();
+              } else {
+                  // If the user cancels, navigate back to the vehicle listing page
+                  window.location.href = '/listing-vehicles';
+              }
+          }
+        </script>
+        <!--////////////Delete vehicle confirmation scripts End/////////////////-->
     </body>
 
 </html>
